@@ -6,7 +6,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const projects = [
   { number: "01", title: "3 Para el ES3", type: "Turismo · Diseño y desarrollo web", tone: "bg-[#17140e]", mark: "3 Para el ES3", detail: "Sitio web de tours de mezcal artesanal en Santiago Matatlán, Oaxaca. Presenta el recorrido, las experiencias y la historia del palenque.", href: "https://pamsb117.github.io/Mezcal3es3/", image: "/projects/mezcal-3es3.png" },
   { number: "02", title: "Tienda de sneakers", type: "E-commerce · UI/UX", tone: "bg-[#dfe8ed]", mark: "DROP 01", detail: "Catálogo editorial, navegación simple y una experiencia de compra pensada para móvil." },
-  { number: "03", title: "Plataforma de dashboards empresariales", type: "Visualización de datos · Desarrollo web", tone: "bg-[#e3e8e4]", mark: "", detail: "Plataforma para consultar indicadores y visualizar información empresarial. Acceso restringido por confidencialidad.", image: "/projects/dashboard-demo.svg", private: true },
+  { number: "03", title: "OXXO · Torre de Control", type: "Sistema empresarial · Diseño y desarrollo web", tone: "bg-[#f0e5df]", mark: "", detail: "Diseño y desarrollo de un portal de dashboards para OXXO, Plaza Oaxaca. Centraliza la consulta de indicadores de Recursos Humanos, Comercial y Administrativo, con información conectada a Google Sheets.", image: "/projects/oxxo-torre-control.png", private: true },
   { number: "04", title: "Portafolio creativo", type: "Identidad · Desarrollo", tone: "bg-[#e2ebdf]", mark: "ESTUDIO", detail: "Una vitrina visual flexible que pone el trabajo y la personalidad del creador al frente." },
 ];
 
@@ -36,15 +36,22 @@ export default function Home() {
             ) : project.private && project.image ? (
               <div className={`project-visual project-visual--private ${project.tone}`}>
                 <span className="project-number">{project.number}</span>
-                <span className="project-demo-label">Datos de demostración</span>
-                <Image className="project-preview" src={`${basePath}${project.image}`} alt="Ilustración de un dashboard genérico con datos ficticios; no es una captura del sistema empresarial" width={1265} height={712} />
+                <span className="project-capture-label">Captura real de la interfaz</span>
+                <Image className="project-preview" src={`${basePath}${project.image}`} alt="Captura real de OXXO Torre de Control, con el portal de dashboards de Plaza Oaxaca y sus áreas de consulta" width={1905} height={919} />
                 <span className="project-visit project-private-label"><LockKeyhole aria-hidden="true" /> Proyecto privado</span>
               </div>
             ) : (
               <div className={`project-visual ${project.tone}`}><span className="project-number">{project.number}</span><div className="project-mark">{project.mark}</div><ArrowUpRight className="project-arrow" /></div>
             )}
             <div className="project-copy"><div><h2>{project.title}</h2><span>{project.type}</span></div><p>{project.detail}</p></div>
-            {project.private && <div className="project-confidentiality">Vista ilustrativa con datos ficticios. Sin acceso público al sistema desde este portafolio.</div>}
+            {project.private && <>
+              <ul className="project-highlights" aria-label="Funciones del sistema">
+                <li><strong>Información conectada</strong><span>Integración con Google Sheets para consultar indicadores actualizados.</span></li>
+                <li><strong>Navegación por áreas</strong><span>Dashboards organizados por Recursos Humanos, Comercial y Administrativo.</span></li>
+                <li><strong>Vista ejecutiva</strong><span>Un punto de entrada para consultar el estado operativo y priorizar el seguimiento.</span></li>
+              </ul>
+              <div className="project-confidentiality">Captura real compartida para presentar el trabajo de diseño y desarrollo. Proyecto de uso interno: este portafolio no ofrece acceso al sistema ni a sus fuentes de datos.</div>
+            </>}
           </article>
         ))}</div>
       </section>
