@@ -4,8 +4,8 @@ import Image from "next/image";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const projects = [
-  { number: "01", title: "3 Para el ES3", type: "Turismo · Diseño y desarrollo web", tone: "bg-[#17140e]", mark: "3 Para el ES3", detail: "Sitio web de tours de mezcal artesanal en Santiago Matatlán, Oaxaca. Presenta el recorrido, las experiencias y la historia del palenque.", href: "https://pamsb117.github.io/Mezcal3es3/", image: "/projects/mezcal-3es3.png" },
-  { number: "02", title: "Tienda de sneakers", type: "E-commerce · UI/UX", tone: "bg-[#dfe8ed]", mark: "DROP 01", detail: "Catálogo editorial, navegación simple y una experiencia de compra pensada para móvil." },
+  { number: "01", title: "3 Para el ES3", type: "Turismo · Diseño y desarrollo web", tone: "bg-[#17140e]", mark: "3 Para el ES3", detail: "Sitio web de tours de mezcal artesanal en Santiago Matatlán, Oaxaca. Presenta el recorrido, las experiencias y la historia del palenque.", href: "https://pamsb117.github.io/Mezcal3es3/", image: "/projects/mezcal-3es3.png", imageAlt: "Portada del sitio 3 Para el ES3, tours de mezcal artesanal en Oaxaca" },
+  { number: "02", title: "Don Aurelio", type: "Catálogo digital · Pedidos por WhatsApp", tone: "bg-[#293c30]", mark: "Don Aurelio", detail: "Catálogo de abarrotes y antojitos con búsqueda, filtros por categoría y un carrito que prepara el pedido para WhatsApp. Diseño adaptable a computadora y celular.", href: "https://pamsb117.github.io/CatalogoWats/", image: "/projects/don-aurelio-catalogo.png", imageAlt: "Vista real del catálogo Don Aurelio con su nuevo diseño, buscador de productos y resumen del pedido" },
   { number: "03", title: "OXXO · Torre de Control", type: "Sistema empresarial · Diseño y desarrollo web", tone: "bg-[#f0e5df]", mark: "", detail: "Diseño y desarrollo de un portal de dashboards para OXXO, Plaza Oaxaca. Centraliza la consulta de indicadores de Recursos Humanos, Comercial y Administrativo, con información conectada a Google Sheets.", image: "/projects/oxxo-torre-control.png", private: true },
   { number: "04", title: "Portafolio creativo", type: "Identidad · Desarrollo", tone: "bg-[#e2ebdf]", mark: "ESTUDIO", detail: "Una vitrina visual flexible que pone el trabajo y la personalidad del creador al frente." },
 ];
@@ -30,7 +30,7 @@ export default function Home() {
             {project.href && project.image ? (
               <a className={`project-visual project-visual--live ${project.tone}`} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Ver sitio de ${project.title} (abre en otra pestaña)`}>
                 <span className="project-number">{project.number}</span>
-                <Image className="project-preview" src={`${basePath}${project.image}`} alt="Portada del sitio 3 Para el ES3, tours de mezcal artesanal en Oaxaca" width={1265} height={712} />
+                <Image className="project-preview" src={`${basePath}${project.image}`} alt={project.imageAlt || project.title} width={1265} height={712} />
                 <span className="project-visit">Ver sitio <ArrowUpRight aria-hidden="true" /></span>
               </a>
             ) : project.private && project.image ? (
