@@ -61,9 +61,12 @@ export default function Home() {
           <div className="project-grid">{projects.map((project) => (
             <article className={`project${project.private ? " project--featured" : ""}`} key={project.number} aria-labelledby={`project-${project.number}`}>
               <div className="project-topline"><span>{project.number} / {project.private ? "Proyecto destacado" : project.type}</span>{project.private && <span className="private-badge"><LockKeyhole aria-hidden="true" /> Uso interno</span>}</div>
+              <div className="project-heading">
+                <h3 id={`project-${project.number}`}>{project.title}</h3>
+                {project.href && <a className="project-site-link" href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Visitar ${project.title} (abre en otra pestaña)`}>Explorar sitio <ArrowUpRight aria-hidden="true" /></a>}
+              </div>
               <ProjectPreview title={project.title} src={`${basePath}${project.image}`} alt={project.imageAlt} width={project.width} height={project.height} confidential={project.private} tone={project.private ? "project-visual--private" : `project-visual--${project.number}`} />
-              {project.href && <a className="project-site-link" href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Visitar ${project.title} (abre en otra pestaña)`}>Explorar sitio <ArrowUpRight aria-hidden="true" /></a>}
-              <div className="project-copy"><div><h3 id={`project-${project.number}`}>{project.title}</h3><span>{project.type}</span></div><p>{project.detail}</p></div>
+              <p className="project-intro">{project.detail}</p>
               <dl className="project-story"><div><dt>El reto</dt><dd>{project.challenge}</dd></div><div><dt>Mi trabajo</dt><dd>{project.role}</dd></div><div><dt>La solución</dt><dd>{project.solution}</dd></div></dl>
               <ul className="tags" aria-label={`Características de ${project.title}`}>{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
               {project.private && <p className="project-confidentiality"><LockKeyhole aria-hidden="true" /><span>Proyecto de uso interno. Se presenta únicamente esta captura para mostrar el trabajo realizado, sin acceso al sistema ni a sus fuentes de datos. La marca OXXO identifica el proyecto y no implica un aval de este portafolio.</span></p>}
