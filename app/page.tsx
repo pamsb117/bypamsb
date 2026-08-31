@@ -1,5 +1,5 @@
 import { ArrowDownRight, ArrowUpRight, Code2, LockKeyhole, Mail, MapPin, MessageCircle } from "lucide-react";
-import Image from "next/image";
+import { ProjectPreview } from "@/components/project-preview";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const github = "https://github.com/pamsb117";
@@ -62,17 +62,8 @@ export default function Home() {
           <div className="project-grid">{projects.map((project) => (
             <article className={`project${project.private ? " project--featured" : ""}`} key={project.number} aria-labelledby={`project-${project.number}`}>
               <div className="project-topline"><span>{project.number} / {project.private ? "Proyecto destacado" : project.type}</span>{project.private && <span className="private-badge"><LockKeyhole aria-hidden="true" /> Uso interno</span>}</div>
-              {project.href ? (
-                <a className={`project-visual project-visual--${project.number}`} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Visitar ${project.title} (abre en otra pestaña)`}>
-                  <Image className="project-preview" src={`${basePath}${project.image}`} alt={project.imageAlt} width={project.width} height={project.height} sizes="(max-width: 760px) 100vw, 50vw" />
-                  <span className="project-visit">Explorar sitio <ArrowUpRight aria-hidden="true" /></span>
-                </a>
-              ) : (
-                <div className="project-visual project-visual--private">
-                  <Image className="project-preview" src={`${basePath}${project.image}`} alt={project.imageAlt} width={project.width} height={project.height} sizes="100vw" />
-                  <span className="capture-label">Captura real de la interfaz</span>
-                </div>
-              )}
+              <ProjectPreview title={project.title} src={`${basePath}${project.image}`} alt={project.imageAlt} width={project.width} height={project.height} confidential={project.private} tone={project.private ? "project-visual--private" : `project-visual--${project.number}`} />
+              {project.href && <a className="project-site-link" href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Visitar ${project.title} (abre en otra pestaña)`}>Explorar sitio <ArrowUpRight aria-hidden="true" /></a>}
               <div className="project-copy"><div><h3 id={`project-${project.number}`}>{project.title}</h3><span>{project.type}</span></div><p>{project.detail}</p></div>
               <dl className="project-story"><div><dt>El reto</dt><dd>{project.challenge}</dd></div><div><dt>Mi trabajo</dt><dd>{project.role}</dd></div><div><dt>La solución</dt><dd>{project.solution}</dd></div></dl>
               <ul className="tags" aria-label={`Características de ${project.title}`}>{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
@@ -97,7 +88,7 @@ export default function Home() {
               <p>¿Un sitio para tu negocio, un catálogo o una herramienta para tu equipo? Cuéntame qué tienes en mente por WhatsApp o correo.</p>
               <a className="button button-lime" href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Escríbeme por WhatsApp al +52 951 280 0070 (abre en otra pestaña)"><MessageCircle aria-hidden="true" /> Escríbeme por WhatsApp <ArrowUpRight aria-hidden="true" /></a>
               <p className="contact-phone">+52 951 280 0070</p>
-              <a className="contact-email" href={`mailto:${email}`}><Mail aria-hidden="true" /><span>{email}</span><ArrowUpRight aria-hidden="true" /></a>
+              <a className="contact-email" href={`mailto:${email}`}><Mail aria-hidden="true" /><span>{email.split("@")[0]}<wbr />@{email.split("@")[1]}</span><ArrowUpRight aria-hidden="true" /></a>
             </div>
           </div>
           <div className="footer-bottom"><span>© 2026 Pamsb · Ángel Franco</span><span><MapPin aria-hidden="true" /> Oaxaca, México</span><a href="#inicio">Volver al inicio ↑</a></div>
