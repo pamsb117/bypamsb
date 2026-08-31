@@ -41,13 +41,13 @@ export default function Home() {
     <>
       <a className="skip-link" href="#contenido">Saltar al contenido</a>
       <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="Ángel Franco, inicio">Ángel<span>.</span></a>
+        <a className="brand" href="#inicio" aria-label="Pamsb, inicio">Pamsb<span>.</span></a>
         <nav aria-label="Navegación principal"><a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a><a href="#contacto">Contacto</a></nav>
         <a className="header-contact" href="#contacto">Hablemos <ArrowUpRight aria-hidden="true" /></a>
       </header>
       <main id="contenido">
         <section id="inicio" className="hero shell" aria-labelledby="hero-title">
-          <div className="eyebrow"><span>Ángel Franco · Diseño & desarrollo web</span><span>Oaxaca, México</span></div>
+          <div className="eyebrow"><span>Pamsb · Diseño & desarrollo web</span><span>Oaxaca, México</span></div>
           <h1 id="hero-title">Tu negocio.<br />Su próxima <em>versión digital.</em></h1>
           <div className="hero-bottom">
             <p>Diseño y desarrollo sitios web, catálogos y dashboards para negocios. Desde la primera idea hasta una experiencia que se entiende y se usa.</p>
@@ -81,12 +81,12 @@ export default function Home() {
         <section id="sobre-mi" className="about shell" aria-labelledby="about-title">
           <div className="section-heading"><span>02 / Sobre mí</span><h2 id="about-title">Diseño con intención.<br /><em>Desarrollo con propósito.</em></h2></div>
           <div className="about-grid">
-            <div className="identity-card"><span className="identity-label">Detrás de cada proyecto</span><span className="identity-monogram" aria-hidden="true">af<span>.</span></span><div><strong>Ángel Franco</strong><span>Diseñador y desarrollador web</span><span className="identity-location"><MapPin aria-hidden="true" /> Oaxaca, México</span></div></div>
+            <div className="identity-card"><span className="identity-label">La persona detrás de Pamsb</span><span className="identity-monogram" aria-hidden="true">af<span>.</span></span><div><strong>Ángel Franco</strong><span>Creador de Pamsb · Diseño y desarrollo web</span><span className="identity-location"><MapPin aria-hidden="true" /> Oaxaca, México</span></div></div>
             <div className="about-copy"><h3>Hola, soy Ángel.</h3><p className="lead">Conecto el diseño visual con la parte funcional de un sitio: lo que una persona ve, entiende y puede hacer.</p><p>Mi trabajo abarca sitios para presentar experiencias, catálogos con pedidos por WhatsApp y portales de dashboards conectados a Google Sheets. Me interesa que cada proyecto responda a una necesidad concreta, con una estructura clara y una interfaz fácil de recorrer.</p><p>Parto del contenido y del objetivo, desarrollo la experiencia y cuido su adaptación a computadora y celular. Los proyectos de este portafolio muestran distintas formas de aplicar ese enfoque.</p><ul className="skills" aria-label="Áreas de trabajo"><li><Code2 aria-hidden="true" /> Desarrollo web</li><li>Diseño de interfaces</li><li>Diseño responsive</li><li>Dashboards</li></ul><a className="text-link" href={github} target="_blank" rel="noopener noreferrer">Conoce mi trabajo en GitHub <ArrowUpRight aria-hidden="true" /></a></div>
           </div>
         </section>
       </main>
-      <footer id="contacto"><div className="shell contact"><span className="footer-label">03 / Contacto</span><div className="contact-grid"><h2>Tu idea puede<br /><em>empezar aquí.</em></h2><div className="contact-copy"><p>¿Un sitio para tu negocio, un catálogo o una herramienta para tu equipo? El primer paso es definir qué necesitas y para quién.</p><p className="contact-note">Encuentra mi perfil y los proyectos públicos en GitHub.</p><a className="button button-lime" href={github} target="_blank" rel="noopener noreferrer"><Code2 aria-hidden="true" /> Ver mi perfil en GitHub <ArrowUpRight aria-hidden="true" /></a></div></div><div className="footer-bottom"><span>© 2026 Ángel Franco</span><span><MapPin aria-hidden="true" /> Oaxaca, México</span><a href="#inicio">Volver al inicio ↑</a></div></div></footer>
+      <footer id="contacto"><div className="shell contact"><span className="footer-label">03 / Contacto</span><div className="contact-grid"><h2>Tu idea puede<br /><em>empezar aquí.</em></h2><div className="contact-copy"><p>¿Un sitio para tu negocio, un catálogo o una herramienta para tu equipo? El primer paso es definir qué necesitas y para quién.</p><p className="contact-note">Encuentra mi perfil y los proyectos públicos en GitHub.</p><a className="button button-lime" href={github} target="_blank" rel="noopener noreferrer"><Code2 aria-hidden="true" /> Ver mi perfil en GitHub <ArrowUpRight aria-hidden="true" /></a></div></div><div className="footer-bottom"><span>© 2026 Pamsb · Ángel Franco</span><span><MapPin aria-hidden="true" /> Oaxaca, México</span><a href="#inicio">Volver al inicio ↑</a></div></div></footer>
     </>
   );
 }
