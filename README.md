@@ -1,4 +1,35 @@
-# vinext-starter
+# Portafolio Web de Ángel
+
+Sitio público: https://pamsb117.github.io/bypamsb/
+
+## Publicación en GitHub Pages
+
+Cada cambio en `main` activa `.github/workflows/pages.yml`: instala las dependencias
+del archivo de bloqueo, ejecuta `npm run build:pages` y publica únicamente `out/`.
+En Settings → Pages, la fuente debe ser **GitHub Actions**.
+
+Para comprobar la exportación localmente, usa Node.js 24 y ejecuta:
+
+```sh
+npm ci
+npm run build:pages
+```
+
+La exportación conserva el diseño de `app/page.tsx` y `app/globals.css`. Configura
+las rutas de recursos para `/bypamsb`; el flujo de publicación obtiene esa ruta
+de GitHub Pages. `NEXT_PUBLIC_BASE_PATH` permite usar otra ruta o una cadena vacía
+para un dominio propio. Los archivos de servidor y ejemplos de base de datos no
+forman parte de esta exportación estática.
+
+El correo de ejemplo, la fotografía pendiente y los enlaces sociales del ZIP
+se conservan y deben personalizarse antes de compartir el portafolio profesionalmente.
+
+## Configuración original de Sites
+
+Se conserva la compilación original (`npm run build`) para Sites. La exportación
+de GitHub Pages usa una configuración separada y no modifica el proyecto de Sites.
+
+### vinext-starter
 
 A clean full-stack starter running on
 [vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
