@@ -2,7 +2,6 @@ import { ArrowDownRight, ArrowUpRight, Code2, LockKeyhole, Mail, MapPin, Message
 import { ProjectPreview } from "@/components/project-preview";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-const github = "https://github.com/pamsb117";
 const email = "angeldejesus.franco20@gmail.com";
 const whatsapp = "https://wa.me/529512800070";
 const projects = [
@@ -75,7 +74,7 @@ export default function Home() {
           <div className="section-heading"><span>02 / Sobre mí</span><h2 id="about-title">Diseño con intención.<br /><em>Desarrollo con propósito.</em></h2></div>
           <div className="about-grid">
             <div className="identity-card"><span className="identity-label">La persona detrás de Pamsb</span><span className="identity-monogram" aria-hidden="true">af<span>.</span></span><div><strong>Ángel Franco</strong><span>Creador de Pamsb · Diseño y desarrollo web</span><span className="identity-location"><MapPin aria-hidden="true" /> Oaxaca, México</span></div></div>
-            <div className="about-copy"><h3>Hola, soy Ángel.</h3><p className="lead">Conecto el diseño visual con la parte funcional de un sitio: lo que una persona ve, entiende y puede hacer.</p><p>Mi trabajo abarca sitios para presentar experiencias, catálogos con pedidos por WhatsApp y portales de dashboards conectados a Google Sheets. Me interesa que cada proyecto responda a una necesidad concreta, con una estructura clara y una interfaz fácil de recorrer.</p><p>Parto del contenido y del objetivo, desarrollo la experiencia y cuido su adaptación a computadora y celular. Los proyectos de este portafolio muestran distintas formas de aplicar ese enfoque.</p><ul className="skills" aria-label="Áreas de trabajo"><li><Code2 aria-hidden="true" /> Desarrollo web</li><li>Diseño de interfaces</li><li>Diseño responsive</li><li>Dashboards</li></ul><a className="text-link" href={github} target="_blank" rel="noopener noreferrer">Conoce mi trabajo en GitHub <ArrowUpRight aria-hidden="true" /></a></div>
+            <div className="about-copy"><h3>Hola, soy Ángel.</h3><p className="lead">Conecto el diseño visual con la parte funcional de un sitio: lo que una persona ve, entiende y puede hacer.</p><p>Mi trabajo abarca sitios para presentar experiencias, catálogos con pedidos por WhatsApp y portales de dashboards conectados a Google Sheets. Me interesa que cada proyecto responda a una necesidad concreta, con una estructura clara y una interfaz fácil de recorrer.</p><p>Parto del contenido y del objetivo, desarrollo la experiencia y cuido su adaptación a computadora y celular. Los proyectos de este portafolio muestran distintas formas de aplicar ese enfoque.</p><ul className="skills" aria-label="Áreas de trabajo"><li><Code2 aria-hidden="true" /> Desarrollo web</li><li>Diseño de interfaces</li><li>Diseño responsive</li><li>Dashboards</li></ul></div>
           </div>
         </section>
       </main>
