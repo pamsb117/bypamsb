@@ -1,8 +1,10 @@
-import { ArrowDownRight, ArrowUpRight, Code2, LockKeyhole, MapPin } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Code2, LockKeyhole, Mail, MapPin, MessageCircle } from "lucide-react";
 import Image from "next/image";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const github = "https://github.com/pamsb117";
+const email = "angeldejesus.franco20@gmail.com";
+const whatsapp = "https://wa.me/529512800070";
 const projects = [
   {
     number: "01", title: "OXXO · Torre de Control", type: "Sistema empresarial · Plaza Oaxaca", private: true,
@@ -86,7 +88,21 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer id="contacto"><div className="shell contact"><span className="footer-label">03 / Contacto</span><div className="contact-grid"><h2>Tu idea puede<br /><em>empezar aquí.</em></h2><div className="contact-copy"><p>¿Un sitio para tu negocio, un catálogo o una herramienta para tu equipo? El primer paso es definir qué necesitas y para quién.</p><p className="contact-note">Encuentra mi perfil y los proyectos públicos en GitHub.</p><a className="button button-lime" href={github} target="_blank" rel="noopener noreferrer"><Code2 aria-hidden="true" /> Ver mi perfil en GitHub <ArrowUpRight aria-hidden="true" /></a></div></div><div className="footer-bottom"><span>© 2026 Pamsb · Ángel Franco</span><span><MapPin aria-hidden="true" /> Oaxaca, México</span><a href="#inicio">Volver al inicio ↑</a></div></div></footer>
+      <footer id="contacto">
+        <div className="shell contact">
+          <span className="footer-label">03 / Contacto</span>
+          <div className="contact-grid">
+            <h2>Tu idea puede<br /><em>empezar aquí.</em></h2>
+            <div className="contact-copy">
+              <p>¿Un sitio para tu negocio, un catálogo o una herramienta para tu equipo? Cuéntame qué tienes en mente por WhatsApp o correo.</p>
+              <a className="button button-lime" href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Escríbeme por WhatsApp al +52 951 280 0070 (abre en otra pestaña)"><MessageCircle aria-hidden="true" /> Escríbeme por WhatsApp <ArrowUpRight aria-hidden="true" /></a>
+              <p className="contact-phone">+52 951 280 0070</p>
+              <a className="contact-email" href={`mailto:${email}`}><Mail aria-hidden="true" /><span>{email}</span><ArrowUpRight aria-hidden="true" /></a>
+            </div>
+          </div>
+          <div className="footer-bottom"><span>© 2026 Pamsb · Ángel Franco</span><span><MapPin aria-hidden="true" /> Oaxaca, México</span><a href="#inicio">Volver al inicio ↑</a></div>
+        </div>
+      </footer>
     </>
   );
 }
