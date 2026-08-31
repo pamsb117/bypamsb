@@ -1,64 +1,92 @@
-import { ArrowDownRight, ArrowUpRight, Code2, LockKeyhole, Mail, MapPin } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Code2, LockKeyhole, MapPin } from "lucide-react";
 import Image from "next/image";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
+const github = "https://github.com/pamsb117";
 const projects = [
-  { number: "01", title: "3 Para el ES3", type: "Turismo · Diseño y desarrollo web", tone: "bg-[#17140e]", mark: "3 Para el ES3", detail: "Sitio web de tours de mezcal artesanal en Santiago Matatlán, Oaxaca. Presenta el recorrido, las experiencias y la historia del palenque.", href: "https://pamsb117.github.io/Mezcal3es3/", image: "/projects/mezcal-3es3.png", imageAlt: "Portada del sitio 3 Para el ES3, tours de mezcal artesanal en Oaxaca" },
-  { number: "02", title: "Don Aurelio", type: "Catálogo digital · Pedidos por WhatsApp", tone: "bg-[#293c30]", mark: "Don Aurelio", detail: "Catálogo de abarrotes y antojitos con búsqueda, filtros por categoría y un carrito que prepara el pedido para WhatsApp. Diseño adaptable a computadora y celular.", href: "https://pamsb117.github.io/CatalogoWats/", image: "/projects/don-aurelio-catalogo.png", imageAlt: "Vista real del catálogo Don Aurelio con su nuevo diseño, buscador de productos y resumen del pedido" },
-  { number: "03", title: "OXXO · Torre de Control", type: "Sistema empresarial · Diseño y desarrollo web", tone: "bg-[#f0e5df]", mark: "", detail: "Diseño y desarrollo de un portal de dashboards para OXXO, Plaza Oaxaca. Centraliza la consulta de indicadores de Recursos Humanos, Comercial y Administrativo, con información conectada a Google Sheets.", image: "/projects/oxxo-torre-control.png", private: true },
+  {
+    number: "01", title: "OXXO · Torre de Control", type: "Sistema empresarial · Plaza Oaxaca", private: true,
+    image: "/projects/oxxo-torre-control.png", width: 1905, height: 919,
+    imageAlt: "Captura real del portal OXXO Torre de Control de Plaza Oaxaca, con navegación por áreas y vista ejecutiva",
+    detail: "Un punto de entrada para consultar indicadores de Recursos Humanos, Comercial y Administrativo, con información conectada a Google Sheets.",
+    challenge: "Organizar la consulta de indicadores de distintas áreas en una interfaz común y fácil de recorrer.",
+    role: "Diseñé y desarrollé la interfaz del portal, la organización de los dashboards y su integración con Google Sheets.",
+    solution: "Un portal con navegación por áreas y una vista ejecutiva que reúne información para el seguimiento operativo.",
+    tags: ["Dashboards", "Google Sheets", "Diseño de interfaces"],
+  },
+  {
+    number: "02", title: "Don Aurelio", type: "Catálogo digital · Pedidos por WhatsApp", private: false,
+    image: "/projects/don-aurelio-catalogo.png", width: 1265, height: 712,
+    imageAlt: "Catálogo Don Aurelio con productos, búsqueda y resumen del pedido", href: "https://pamsb117.github.io/CatalogoWats/",
+    detail: "Un catálogo de abarrotes y antojitos que permite explorar productos y preparar un pedido desde el celular o la computadora.",
+    challenge: "Facilitar la consulta de productos y reunir un pedido sin depender de un intercambio de mensajes por cada artículo.",
+    role: "Diseñé y desarrollé el catálogo, los filtros, el buscador y el carrito con cálculo del total.",
+    solution: "El cliente elige productos y cantidades; el carrito prepara un mensaje para continuar el pedido por WhatsApp.",
+    tags: ["Catálogo interactivo", "Carrito", "WhatsApp"],
+  },
+  {
+    number: "03", title: "3 Para el ES3", type: "Turismo · Mezcal artesanal", private: false,
+    image: "/projects/mezcal-3es3.png", width: 1265, height: 712,
+    imageAlt: "Portada del sitio 3 Para el ES3, experiencias de mezcal en Santiago Matatlán, Oaxaca", href: "https://pamsb117.github.io/Mezcal3es3/",
+    detail: "Un sitio para descubrir la historia del palenque y los recorridos de mezcal artesanal en Santiago Matatlán, Oaxaca.",
+    challenge: "Presentar la identidad del palenque y explicar sus experiencias de forma clara para quien planea una visita.",
+    role: "Diseñé y desarrollé el sitio, su estructura de contenido y su presentación en computadora y celular.",
+    solution: "Una experiencia visual que reúne la historia, los recorridos y la información del proyecto en un mismo lugar.",
+    tags: ["Sitio web", "Diseño responsive", "Turismo"],
+  },
 ];
 
 export default function Home() {
   return (
-    <main>
+    <>
+      <a className="skip-link" href="#contenido">Saltar al contenido</a>
       <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="Inicio">Ángel<span>.</span></a>
+        <a className="brand" href="#inicio" aria-label="Ángel Franco, inicio">Ángel<span>.</span></a>
         <nav aria-label="Navegación principal"><a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a><a href="#contacto">Contacto</a></nav>
-        <a className="availability" href="#contacto"><span />Disponible para proyectos</a>
+        <a className="header-contact" href="#contacto">Hablemos <ArrowUpRight aria-hidden="true" /></a>
       </header>
-      <section id="inicio" className="hero shell">
-        <div className="eyebrow"><span>Diseñador & desarrollador web</span><span>Oaxaca, México</span></div>
-        <h1>Creo páginas web<br />que se sienten <em>claras.</em></h1>
-        <div className="hero-bottom"><p>Combino diseño y desarrollo para transformar ideas en experiencias digitales funcionales, atractivas y fáciles de usar.</p><a className="circle-link" href="#proyectos" aria-label="Ver proyectos"><ArrowDownRight /></a></div>
-      </section>
-      <section id="proyectos" className="projects shell">
-        <div className="section-heading"><span>01 / Proyectos seleccionados</span><p>Una mezcla de sitios, tiendas y productos digitales.</p></div>
-        <div className="project-grid">{projects.map((project) => (
-          <article className={`project${project.private ? " project--private" : ""}`} key={project.number}>
-            {project.href && project.image ? (
-              <a className={`project-visual project-visual--live ${project.tone}`} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Ver sitio de ${project.title} (abre en otra pestaña)`}>
-                <span className="project-number">{project.number}</span>
-                <Image className="project-preview" src={`${basePath}${project.image}`} alt={project.imageAlt || project.title} width={1265} height={712} />
-                <span className="project-visit">Ver sitio <ArrowUpRight aria-hidden="true" /></span>
-              </a>
-            ) : project.private && project.image ? (
-              <div className={`project-visual project-visual--private ${project.tone}`}>
-                <span className="project-number">{project.number}</span>
-                <span className="project-capture-label">Captura real de la interfaz</span>
-                <Image className="project-preview" src={`${basePath}${project.image}`} alt="Captura real de OXXO Torre de Control, con el portal de dashboards de Plaza Oaxaca y sus áreas de consulta" width={1905} height={919} />
-                <span className="project-visit project-private-label"><LockKeyhole aria-hidden="true" /> Proyecto privado</span>
-              </div>
-            ) : (
-              <div className={`project-visual ${project.tone}`}><span className="project-number">{project.number}</span><div className="project-mark">{project.mark}</div><ArrowUpRight className="project-arrow" /></div>
-            )}
-            <div className="project-copy"><div><h2>{project.title}</h2><span>{project.type}</span></div><p>{project.detail}</p></div>
-            {project.private && <>
-              <ul className="project-highlights" aria-label="Funciones del sistema">
-                <li><strong>Información conectada</strong><span>Integración con Google Sheets para consultar indicadores actualizados.</span></li>
-                <li><strong>Navegación por áreas</strong><span>Dashboards organizados por Recursos Humanos, Comercial y Administrativo.</span></li>
-                <li><strong>Vista ejecutiva</strong><span>Un punto de entrada para consultar el estado operativo y priorizar el seguimiento.</span></li>
-              </ul>
-              <div className="project-confidentiality">Captura real compartida para presentar el trabajo de diseño y desarrollo. Proyecto de uso interno: este portafolio no ofrece acceso al sistema ni a sus fuentes de datos.</div>
-            </>}
-          </article>
-        ))}</div>
-      </section>
-      <section id="sobre-mi" className="about shell">
-        <div className="section-heading"><span>02 / Sobre mí</span><p>Diseño con intención. Construyo con detalle.</p></div>
-        <div className="about-grid"><div className="portrait" aria-label="Espacio para fotografía de Ángel"><span>AF</span><small>Tu fotografía aquí</small></div><div className="about-copy"><h2>Hola, soy Ángel.</h2><p className="lead">Me interesa crear páginas que no solo se vean bien, sino que comuniquen con claridad y ayuden a cumplir un objetivo.</p><p>Trabajo cada proyecto desde la estructura y el concepto visual hasta su adaptación en computadora y celular. Mi enfoque es simple: entender la idea, quitar el ruido y cuidar lo que sí importa.</p><div className="skills"><span><Code2 /> Desarrollo web</span><span>UI/UX</span><span>Diseño responsive</span><span>Identidad visual</span></div></div></div>
-      </section>
-      <footer id="contacto"><div className="shell contact"><span className="footer-label">03 / Contacto</span><h2>¿Tienes una idea?<br /><em>Hagámosla realidad.</em></h2><a className="email" href="mailto:tu-correo@ejemplo.com">tu-correo@ejemplo.com <ArrowUpRight /></a><div className="footer-bottom"><span>© 2026 Ángel Franco</span><div><a href="#">@ Instagram</a><a href="#"><Mail /> Correo</a><span><MapPin /> Oaxaca, MX</span></div></div></div></footer>
-    </main>
+      <main id="contenido">
+        <section id="inicio" className="hero shell" aria-labelledby="hero-title">
+          <div className="eyebrow"><span>Ángel Franco · Diseño & desarrollo web</span><span>Oaxaca, México</span></div>
+          <h1 id="hero-title">Tu negocio.<br />Su próxima <em>versión digital.</em></h1>
+          <div className="hero-bottom">
+            <p>Diseño y desarrollo sitios web, catálogos y dashboards para negocios. Desde la primera idea hasta una experiencia que se entiende y se usa.</p>
+            <div className="hero-actions"><a className="button button-primary" href="#proyectos">Ver proyectos <ArrowDownRight aria-hidden="true" /></a><a className="button button-outline" href="#contacto">Hablemos de tu proyecto <ArrowUpRight aria-hidden="true" /></a></div>
+          </div>
+          <div className="hero-index" aria-label="Especialidades"><span>Sitios que presentan</span><span>Catálogos que conectan</span><span>Dashboards que organizan</span></div>
+        </section>
+        <section id="proyectos" className="projects shell" aria-labelledby="projects-title">
+          <div className="section-heading"><span>01 / Proyectos seleccionados</span><h2 id="projects-title">Ideas distintas.<br /><em>Soluciones a medida.</em></h2></div>
+          <div className="project-grid">{projects.map((project) => (
+            <article className={`project${project.private ? " project--featured" : ""}`} key={project.number} aria-labelledby={`project-${project.number}`}>
+              <div className="project-topline"><span>{project.number} / {project.private ? "Proyecto destacado" : project.type}</span>{project.private && <span className="private-badge"><LockKeyhole aria-hidden="true" /> Uso interno</span>}</div>
+              {project.href ? (
+                <a className={`project-visual project-visual--${project.number}`} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Visitar ${project.title} (abre en otra pestaña)`}>
+                  <Image className="project-preview" src={`${basePath}${project.image}`} alt={project.imageAlt} width={project.width} height={project.height} sizes="(max-width: 760px) 100vw, 50vw" />
+                  <span className="project-visit">Explorar sitio <ArrowUpRight aria-hidden="true" /></span>
+                </a>
+              ) : (
+                <div className="project-visual project-visual--private">
+                  <Image className="project-preview" src={`${basePath}${project.image}`} alt={project.imageAlt} width={project.width} height={project.height} sizes="100vw" />
+                  <span className="capture-label">Captura real de la interfaz</span>
+                </div>
+              )}
+              <div className="project-copy"><div><h3 id={`project-${project.number}`}>{project.title}</h3><span>{project.type}</span></div><p>{project.detail}</p></div>
+              <dl className="project-story"><div><dt>El reto</dt><dd>{project.challenge}</dd></div><div><dt>Mi trabajo</dt><dd>{project.role}</dd></div><div><dt>La solución</dt><dd>{project.solution}</dd></div></dl>
+              <ul className="tags" aria-label={`Características de ${project.title}`}>{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+              {project.private && <p className="project-confidentiality"><LockKeyhole aria-hidden="true" /><span>Proyecto de uso interno. Se presenta únicamente esta captura para mostrar el trabajo realizado, sin acceso al sistema ni a sus fuentes de datos. La marca OXXO identifica el proyecto y no implica un aval de este portafolio.</span></p>}
+            </article>
+          ))}</div>
+        </section>
+        <section id="sobre-mi" className="about shell" aria-labelledby="about-title">
+          <div className="section-heading"><span>02 / Sobre mí</span><h2 id="about-title">Diseño con intención.<br /><em>Desarrollo con propósito.</em></h2></div>
+          <div className="about-grid">
+            <div className="identity-card"><span className="identity-label">Detrás de cada proyecto</span><span className="identity-monogram" aria-hidden="true">af<span>.</span></span><div><strong>Ángel Franco</strong><span>Diseñador y desarrollador web</span><span className="identity-location"><MapPin aria-hidden="true" /> Oaxaca, México</span></div></div>
+            <div className="about-copy"><h3>Hola, soy Ángel.</h3><p className="lead">Conecto el diseño visual con la parte funcional de un sitio: lo que una persona ve, entiende y puede hacer.</p><p>Mi trabajo abarca sitios para presentar experiencias, catálogos con pedidos por WhatsApp y portales de dashboards conectados a Google Sheets. Me interesa que cada proyecto responda a una necesidad concreta, con una estructura clara y una interfaz fácil de recorrer.</p><p>Parto del contenido y del objetivo, desarrollo la experiencia y cuido su adaptación a computadora y celular. Los proyectos de este portafolio muestran distintas formas de aplicar ese enfoque.</p><ul className="skills" aria-label="Áreas de trabajo"><li><Code2 aria-hidden="true" /> Desarrollo web</li><li>Diseño de interfaces</li><li>Diseño responsive</li><li>Dashboards</li></ul><a className="text-link" href={github} target="_blank" rel="noopener noreferrer">Conoce mi trabajo en GitHub <ArrowUpRight aria-hidden="true" /></a></div>
+          </div>
+        </section>
+      </main>
+      <footer id="contacto"><div className="shell contact"><span className="footer-label">03 / Contacto</span><div className="contact-grid"><h2>Tu idea puede<br /><em>empezar aquí.</em></h2><div className="contact-copy"><p>¿Un sitio para tu negocio, un catálogo o una herramienta para tu equipo? El primer paso es definir qué necesitas y para quién.</p><p className="contact-note">Encuentra mi perfil y los proyectos públicos en GitHub.</p><a className="button button-lime" href={github} target="_blank" rel="noopener noreferrer"><Code2 aria-hidden="true" /> Ver mi perfil en GitHub <ArrowUpRight aria-hidden="true" /></a></div></div><div className="footer-bottom"><span>© 2026 Ángel Franco</span><span><MapPin aria-hidden="true" /> Oaxaca, México</span><a href="#inicio">Volver al inicio ↑</a></div></div></footer>
+    </>
   );
 }
