@@ -3,8 +3,8 @@ import "./globals.css";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const siteUrl = "https://pamsb117.github.io/bypamsb/";
-const title = "Pamsb · Diseño y desarrollo web";
-const description = "Sitios web, catálogos digitales y dashboards para negocios. Pamsb es la marca de Ángel Franco: diseño y desarrollo web en Oaxaca, México.";
+const title = "Pamsb · Páginas web, catálogos y dashboards";
+const description = "Diseño y desarrollo páginas web, catálogos con pedidos por WhatsApp y dashboards para negocios locales y proyectos en Oaxaca, México.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   alternates: { canonical: siteUrl },
   openGraph: {
     title, description, url: siteUrl, siteName: "Pamsb", locale: "es_MX", type: "website",
-    images: [{ url: `${siteUrl}og.png`, alt: "Pamsb. Diseño y desarrollo web. Sitios, catálogos y dashboards." }],
+    images: [{ url: `${siteUrl}og.png`, alt: "Pamsb. Páginas web, catálogos digitales y dashboards para negocios." }],
   },
   twitter: { card: "summary_large_image", title, description, images: [`${siteUrl}og.png`] },
   icons: {

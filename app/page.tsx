@@ -1,9 +1,34 @@
-import { ArrowDownRight, ArrowUpRight, Code2, LockKeyhole, Mail, MapPin, MessageCircle } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, CheckCircle2, Code2, Layers3, LockKeyhole, Mail, MapPin, MessageCircle, Send, Sparkles } from "lucide-react";
 import { ProjectPreview } from "@/components/project-preview";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const email = "angeldejesus.franco20@gmail.com";
-const whatsapp = "https://wa.me/529512800070";
+const whatsappQuote = "https://wa.me/529512800070?text=Hola%20%C3%81ngel%2C%20vengo%20de%20Instagram%20y%20quiero%20cotizar%20un%20proyecto%20digital.";
+const services = [
+  {
+    title: "Página web para negocio",
+    description: "Una presencia clara para explicar qué haces, mostrar confianza y llevar a tus clientes a WhatsApp, correo o una reservación.",
+    fit: "Ideal para marcas, servicios, restaurantes, turismo y proyectos que necesitan verse profesionales.",
+    icon: Sparkles,
+  },
+  {
+    title: "Catálogo con pedidos por WhatsApp",
+    description: "Productos organizados, búsqueda, carrito y mensaje listo para que el cliente continúe el pedido sin escribir todo desde cero.",
+    fit: "Ideal para tiendas, comida, abarrotes, mezcal, regalos o negocios con productos cambiantes.",
+    icon: Send,
+  },
+  {
+    title: "Dashboard o panel interno",
+    description: "Información ordenada para consultar indicadores, procesos o reportes desde una interfaz fácil de recorrer.",
+    fit: "Ideal para equipos que trabajan con Google Sheets y necesitan consultar datos sin perder tiempo.",
+    icon: Layers3,
+  },
+];
+const workflow = [
+  "Me cuentas qué necesitas y revisamos si conviene sitio, catálogo o dashboard.",
+  "Ordeno el contenido, propongo la estructura y preparo una primera versión funcional.",
+  "Ajustamos detalles, publico la página y te dejo listo el enlace para compartir.",
+];
 const projects = [
   {
     number: "01", title: "OXXO · Torre de Control", type: "Sistema empresarial · Plaza Oaxaca", private: true,
@@ -43,21 +68,43 @@ export default function Home() {
       <a className="skip-link" href="#contenido">Saltar al contenido</a>
       <header className="site-header">
         <a className="brand" href="#inicio" aria-label="Pamsb, inicio">Pamsb<span>.</span></a>
-        <nav aria-label="Navegación principal"><a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a><a href="#contacto">Contacto</a></nav>
-        <a className="header-contact" href="#contacto">Hablemos <ArrowUpRight aria-hidden="true" /></a>
+        <nav aria-label="Navegación principal"><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a></nav>
+        <a className="header-contact" href={whatsappQuote} target="_blank" rel="noopener noreferrer">Cotizar <ArrowUpRight aria-hidden="true" /></a>
       </header>
       <main id="contenido">
         <section id="inicio" className="hero shell" aria-labelledby="hero-title">
-          <div className="eyebrow"><span>Pamsb · Diseño & desarrollo web</span><span>Oaxaca, México</span></div>
+          <div className="eyebrow"><span>Pamsb · Presencia digital para negocios</span><span>Oaxaca, México</span></div>
           <h1 id="hero-title">Tu negocio.<br />Su próxima <em>versión digital.</em></h1>
           <div className="hero-bottom">
-            <p>Diseño y desarrollo sitios web, catálogos y dashboards para negocios. Desde la primera idea hasta una experiencia que se entiende y se usa.</p>
-            <div className="hero-actions"><a className="button button-primary" href="#proyectos">Ver proyectos <ArrowDownRight aria-hidden="true" /></a><a className="button button-outline" href="#contacto">Hablemos de tu proyecto <ArrowUpRight aria-hidden="true" /></a></div>
+            <p>Diseño páginas web, catálogos y dashboards para negocios que quieren verse mejor, explicar su oferta y recibir mensajes de clientes con menos fricción.</p>
+            <div className="hero-actions"><a className="button button-primary" href={whatsappQuote} target="_blank" rel="noopener noreferrer"><MessageCircle aria-hidden="true" /> Cotiza por WhatsApp</a><a className="button button-outline" href="#proyectos">Ver proyectos <ArrowDownRight aria-hidden="true" /></a></div>
           </div>
           <div className="hero-index" aria-label="Especialidades"><span>Sitios que presentan</span><span>Catálogos que conectan</span><span>Dashboards que organizan</span></div>
         </section>
+        <section id="servicios" className="services shell" aria-labelledby="services-title">
+          <div className="section-heading"><span>01 / Servicios</span><h2 id="services-title">Lo que puedes pedir.<br /><em>Sin vueltas.</em></h2></div>
+          <div className="service-grid">
+            {services.map((service) => {
+              const Icon = service.icon;
+              return (
+                <article className="service-card" key={service.title}>
+                  <div className="service-icon"><Icon aria-hidden="true" /></div>
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                  <span>{service.fit}</span>
+                </article>
+              );
+            })}
+          </div>
+          <div className="process-strip" aria-label="Proceso de trabajo">
+            <span>Cómo empezamos</span>
+            <ol>
+              {workflow.map((step) => <li key={step}><CheckCircle2 aria-hidden="true" /> {step}</li>)}
+            </ol>
+          </div>
+        </section>
         <section id="proyectos" className="projects shell" aria-labelledby="projects-title">
-          <div className="section-heading"><span>01 / Proyectos seleccionados</span><h2 id="projects-title">Ideas distintas.<br /><em>Soluciones a medida.</em></h2></div>
+          <div className="section-heading"><span>02 / Proyectos seleccionados</span><h2 id="projects-title">Ideas distintas.<br /><em>Soluciones a medida.</em></h2></div>
           <div className="project-grid">{projects.map((project) => (
             <article className={`project${project.private ? " project--featured" : ""}`} key={project.number} aria-labelledby={`project-${project.number}`}>
               <div className="project-topline"><span>{project.number} / {project.private ? "Proyecto destacado" : project.type}</span>{project.private && <span className="private-badge"><LockKeyhole aria-hidden="true" /> Uso interno</span>}</div>
@@ -74,21 +121,21 @@ export default function Home() {
           ))}</div>
         </section>
         <section id="sobre-mi" className="about shell" aria-labelledby="about-title">
-          <div className="section-heading"><span>02 / Sobre mí</span><h2 id="about-title">Diseño con intención.<br /><em>Desarrollo con propósito.</em></h2></div>
+          <div className="section-heading"><span>03 / Sobre mí</span><h2 id="about-title">Diseño con intención.<br /><em>Desarrollo con propósito.</em></h2></div>
           <div className="about-grid">
             <div className="identity-card"><span className="identity-label">La persona detrás de Pamsb</span><span className="identity-monogram" aria-hidden="true">af<span>.</span></span><div><strong>Ángel Franco</strong><span>Creador de Pamsb · Diseño y desarrollo web</span><span className="identity-location"><MapPin aria-hidden="true" /> Oaxaca, México</span></div></div>
-            <div className="about-copy"><h3>Hola, soy Ángel.</h3><p className="lead">Conecto el diseño visual con la parte funcional de un sitio: lo que una persona ve, entiende y puede hacer.</p><p>Mi trabajo abarca sitios para presentar experiencias, catálogos con pedidos por WhatsApp y portales de dashboards conectados a Google Sheets. Me interesa que cada proyecto responda a una necesidad concreta, con una estructura clara y una interfaz fácil de recorrer.</p><p>Parto del contenido y del objetivo, desarrollo la experiencia y cuido su adaptación a computadora y celular. Los proyectos de este portafolio muestran distintas formas de aplicar ese enfoque.</p><ul className="skills" aria-label="Áreas de trabajo"><li><Code2 aria-hidden="true" /> Desarrollo web</li><li>Diseño de interfaces</li><li>Diseño responsive</li><li>Dashboards</li></ul></div>
+            <div className="about-copy"><h3>Hola, soy Ángel.</h3><p className="lead">Ayudo a negocios locales y proyectos independientes a tener una presencia digital clara, funcional y lista para compartirse.</p><p>Mi trabajo conecta el diseño visual con lo que una persona necesita hacer dentro de un sitio: entender tu oferta, revisar opciones, armar un pedido o consultar información importante.</p><p>Parto del contenido y del objetivo, desarrollo la experiencia y cuido su adaptación a computadora y celular. Los proyectos de este portafolio muestran distintas formas de aplicar ese enfoque.</p><ul className="skills" aria-label="Áreas de trabajo"><li><Code2 aria-hidden="true" /> Desarrollo web</li><li>Diseño de interfaces</li><li>Diseño responsive</li><li>Dashboards</li></ul></div>
           </div>
         </section>
       </main>
       <footer id="contacto">
         <div className="shell contact">
-          <span className="footer-label">03 / Contacto</span>
+          <span className="footer-label">04 / Contacto</span>
           <div className="contact-grid">
             <h2>Tu idea puede<br /><em>empezar aquí.</em></h2>
             <div className="contact-copy">
-              <p>¿Un sitio para tu negocio, un catálogo o una herramienta para tu equipo? Cuéntame qué tienes en mente por WhatsApp o correo.</p>
-              <a className="button button-lime" href={whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Escríbeme por WhatsApp al +52 951 280 0070 (abre en otra pestaña)"><MessageCircle aria-hidden="true" /> Escríbeme por WhatsApp <ArrowUpRight aria-hidden="true" /></a>
+              <p>¿Quieres una página, un catálogo o una herramienta para tu equipo? Mándame un mensaje con tu idea y te digo qué camino conviene.</p>
+              <a className="button button-lime" href={whatsappQuote} target="_blank" rel="noopener noreferrer" aria-label="Cotiza tu proyecto por WhatsApp al +52 951 280 0070 (abre en otra pestaña)"><MessageCircle aria-hidden="true" /> Cotizar por WhatsApp <ArrowUpRight aria-hidden="true" /></a>
               <p className="contact-phone">+52 951 280 0070</p>
               <a className="contact-email" href={`mailto:${email}`}><Mail aria-hidden="true" /><span>{email.split("@")[0]}<wbr />@{email.split("@")[1]}</span><ArrowUpRight aria-hidden="true" /></a>
             </div>
