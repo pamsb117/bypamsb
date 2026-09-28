@@ -62,6 +62,18 @@ const projects = [
   },
 ];
 
+const spiderWeb = (
+  <svg className="spider-web" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round">
+      <path d="M200 0 0 0M200 0 20 90M200 0 70 160M200 0 140 195M200 0 200 200" />
+      <path d="M170 0Q176 16 173 26Q184 28 200 30" />
+      <path d="M130 0Q140 30 133 46Q148 60 157 69Q170 64 200 64" />
+      <path d="M88 0Q100 42 92 64Q118 88 118 108Q150 112 200 106" />
+      <path d="M44 0Q60 56 50 82Q86 118 90 142Q124 150 200 146" />
+    </g>
+  </svg>
+);
+
 export default function Home() {
   return (
     <>
@@ -73,11 +85,13 @@ export default function Home() {
       </header>
       <main id="contenido">
         <section id="inicio" className="hero shell" aria-labelledby="hero-title">
+          {spiderWeb}
           <div className="eyebrow"><span>Pamsb · Presencia digital para negocios</span><span>Oaxaca, México</span></div>
+          <code className="code-deco code-deco--hero" aria-hidden="true">{"<Negocio online={true} />"}</code>
           <h1 id="hero-title">Tu negocio.<br />Su próxima <em>versión digital.</em></h1>
           <div className="hero-bottom">
             <p>Diseño páginas web, catálogos y dashboards para negocios que quieren verse mejor, explicar su oferta y recibir mensajes de clientes con menos fricción.</p>
-            <div className="hero-actions"><a className="button button-primary" href={whatsappQuote} target="_blank" rel="noopener noreferrer"><MessageCircle aria-hidden="true" /> Cotiza por WhatsApp</a><a className="button button-outline" href="#proyectos">Ver proyectos <ArrowDownRight aria-hidden="true" /></a></div>
+            <div className="hero-actions"><a className="button button-primary" href={whatsappQuote} target="_blank" rel="noopener noreferrer"><MessageCircle aria-hidden="true" /> Cotiza por WhatsApp</a><a className="button button-glass" href="#proyectos">Ver proyectos <ArrowDownRight aria-hidden="true" /></a></div>
           </div>
           <div className="hero-index" aria-label="Especialidades"><span>Sitios que presentan</span><span>Catálogos que conectan</span><span>Dashboards que organizan</span></div>
         </section>
@@ -131,11 +145,12 @@ export default function Home() {
       <footer id="contacto">
         <div className="shell contact">
           <span className="footer-label">04 / Contacto</span>
+          <code className="code-deco code-deco--footer" aria-hidden="true">{"cliente.escribe(\"Hola\") // → WhatsApp"}</code>
           <div className="contact-grid">
             <h2>Tu idea puede<br /><em>empezar aquí.</em></h2>
             <div className="contact-copy">
               <p>¿Quieres una página, un catálogo o una herramienta para tu equipo? Mándame un mensaje con tu idea y te digo qué camino conviene.</p>
-              <a className="button button-lime" href={whatsappQuote} target="_blank" rel="noopener noreferrer" aria-label="Cotiza tu proyecto por WhatsApp al +52 951 280 0070 (abre en otra pestaña)"><MessageCircle aria-hidden="true" /> Cotizar por WhatsApp <ArrowUpRight aria-hidden="true" /></a>
+              <a className="button button-primary" href={whatsappQuote} target="_blank" rel="noopener noreferrer" aria-label="Cotiza tu proyecto por WhatsApp al +52 951 280 0070 (abre en otra pestaña)"><MessageCircle aria-hidden="true" /> Cotizar por WhatsApp <ArrowUpRight aria-hidden="true" /></a>
               <p className="contact-phone">+52 951 280 0070</p>
               <a className="contact-email" href={`mailto:${email}`}><Mail aria-hidden="true" /><span>{email.split("@")[0]}<wbr />@{email.split("@")[1]}</span><ArrowUpRight aria-hidden="true" /></a>
             </div>

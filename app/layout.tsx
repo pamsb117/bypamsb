@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const siteUrl = "https://pamsb117.github.io/bypamsb/";
 const title = "Pamsb · Páginas web, catálogos y dashboards";
 const description = "Diseño y desarrollo páginas web, catálogos con pedidos por WhatsApp y dashboards para negocios locales y proyectos en Oaxaca, México.";
+
+export const viewport: Viewport = { themeColor: "#1B1E27", colorScheme: "dark" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -29,7 +31,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <div className="ambient" aria-hidden="true"><span /><span /><span /></div>
+        {children}
+      </body>
     </html>
   );
 }
