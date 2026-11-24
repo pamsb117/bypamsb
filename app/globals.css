@@ -508,3 +508,14 @@ html.intro-seen .intro{display:none}
   html.motion-ready .project[data-reveal] .project-visual{clip-path:none}
   html.motion-ready .project[data-reveal] .project-preview{scale:1}
 }
+
+/* Service rows open WhatsApp with the service prefilled */
+.service-group-card li{padding:0}
+.service-group-card li>a{flex:1;min-width:0;display:flex;align-items:flex-start;gap:14px;padding:14px 8px 14px 0;border-radius:14px;transition:background .25s,padding .25s}
+.service-group-card li>a>span:nth-child(2){display:flex;flex-direction:column;gap:4px;min-width:0;flex:1}
+.service-group-card li>a>span:nth-child(2)>span{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:13.5px;line-height:1.5;color:var(--text-2)}
+.service-go{width:16px;height:16px;flex-shrink:0;margin-top:3px;color:var(--lilac);opacity:.45;transition:opacity .25s,transform .25s}
+.service-group-card li>a:hover .service-go,.service-group-card li>a:focus-visible .service-go{opacity:1;transform:translate(2px,-2px)}
+.service-group-card li>a:hover strong{color:var(--lilac)}
+.service-group-card li>a:hover .service-icon{color:var(--text)}
+@media(max-width:760px){.service-group-card li>a{padding:12px 4px 12px 0}.service-go{opacity:.8}}
