@@ -1,25 +1,34 @@
-import { ArrowDownRight, ArrowUpRight, CheckCircle2, Code2, Layers3, LockKeyhole, Mail, MapPin, MessageCircle, Send, Sparkles } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Bot, CalendarCheck, CheckCircle2, Clapperboard, Code2, Layers3, LockKeyhole, Mail, MapPin, Megaphone, MessageCircle, Palette, Send, Share2, Sparkles } from "lucide-react";
 import { ProjectPreview } from "@/components/project-preview";
 import { ScrollMotion } from "@/components/scroll-motion";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const email = "angeldejesus.franco20@gmail.com";
 const whatsappQuote = `https://wa.me/529512800070?text=${encodeURIComponent("Hola Ángel, vi tu portafolio y quiero cotizar un proyecto digital.")}`;
-const services = [
+const serviceGroups = [
   {
-    title: "Página web para negocio",
-    description: "Presenta lo que ofreces y facilita que tus clientes te contacten o reserven.",
-    icon: Sparkles,
+    label: "Contenido y publicidad",
+    items: [
+      { title: "Redes sociales", description: "Paquetes mensuales con carruseles, reels y calendario de publicaciones para Instagram, Facebook y TikTok.", icon: Share2 },
+      { title: "Videos promocionales", description: "Videos animados y de producto para presentar tu negocio, una promoción o un lanzamiento.", icon: Clapperboard },
+      { title: "Anuncios en Meta", description: "Campañas en Facebook e Instagram que mandan a tus clientes directo a tu WhatsApp.", icon: Megaphone },
+    ],
   },
   {
-    title: "Catálogo con pedidos por WhatsApp",
-    description: "Tus clientes eligen productos y envían su pedido listo por WhatsApp.",
-    icon: Send,
+    label: "Marca y presencia web",
+    items: [
+      { title: "Identidad de marca", description: "Logotipo, paleta, tipografías y lineamientos para que tu negocio se vea consistente en todos lados.", icon: Palette },
+      { title: "Página web para negocio", description: "Presenta lo que ofreces y facilita que tus clientes te contacten o reserven.", icon: Sparkles },
+      { title: "Catálogo con pedidos por WhatsApp", description: "Tus clientes eligen productos y envían su pedido listo por WhatsApp.", icon: Send },
+    ],
   },
   {
-    title: "Dashboard o panel interno",
-    description: "Consulta indicadores y reportes de tu equipo en un solo lugar.",
-    icon: Layers3,
+    label: "Sistemas y herramientas",
+    items: [
+      { title: "Citas y punto de venta", description: "Sistema para agendar citas y cobrar, pensado para estéticas, consultorios y negocios de servicio.", icon: CalendarCheck },
+      { title: "Dashboard o panel interno", description: "Consulta indicadores y reportes de tu equipo en un solo lugar.", icon: Layers3 },
+      { title: "Asistente con IA", description: "Un chat que responde dudas de tus clientes o de tu equipo con la información de tu negocio.", icon: Bot },
+    ],
   },
 ];
 const workflow = [
@@ -82,29 +91,34 @@ export default function Home() {
       <main id="contenido">
         <section id="inicio" className="hero shell" aria-labelledby="hero-title">
           {spiderWeb}
-          <div className="eyebrow"><span>Pamsb · Presencia digital para negocios</span><span>Oaxaca, México</span></div>
+          <div className="eyebrow"><span>Pamsb · Marketing y desarrollo para negocios</span><span>Oaxaca, México</span></div>
           <code className="code-deco code-deco--hero" aria-hidden="true">{"<Negocio online={true} />"}</code>
           <h1 id="hero-title">Tu negocio.<br />Su próxima <em>versión digital.</em></h1>
           <div className="hero-bottom">
-            <p>Creo páginas web, catálogos y paneles para que tu negocio muestre lo que ofrece y tus clientes sepan cómo contactarte.</p>
+            <p>Manejo tus redes, creo tus videos y desarrollo páginas web, catálogos y sistemas para que tu negocio se vea bien y tus clientes te encuentren.</p>
             <div className="hero-actions"><a className="button button-primary" href={whatsappQuote} target="_blank" rel="noopener noreferrer"><MessageCircle aria-hidden="true" /> Cotiza por WhatsApp</a><a className="button button-glass" href="#proyectos">Ver proyectos <ArrowDownRight aria-hidden="true" /></a></div>
           </div>
-          <div className="hero-index" aria-label="Especialidades"><span>Sitios que presentan</span><span>Catálogos que conectan</span><span>Dashboards que organizan</span></div>
+          <div className="hero-index" aria-label="Especialidades"><span>Contenido que atrae</span><span>Sitios que presentan</span><span>Sistemas que organizan</span></div>
         </section>
         <section id="servicios" className="services shell" aria-labelledby="services-title">
           <div className="section-heading" data-reveal><span>01 / Servicios</span><h2 id="services-title">Lo que puedes pedir.<br /><em>Sin vueltas.</em></h2></div>
-          <div className="service-grid">
-            {services.map((service) => {
-              const Icon = service.icon;
-              return (
-                <article className="service-card" key={service.title} data-reveal>
-                  <div className="service-icon"><Icon aria-hidden="true" /></div>
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                </article>
-              );
-            })}
-          </div>
+          {serviceGroups.map((group) => (
+            <div className="service-group" key={group.label}>
+              <h3 className="service-group-label" data-reveal>{group.label}</h3>
+              <div className="service-grid">
+                {group.items.map((service) => {
+                  const Icon = service.icon;
+                  return (
+                    <article className="service-card" key={service.title} data-reveal>
+                      <div className="service-icon"><Icon aria-hidden="true" /></div>
+                      <h3>{service.title}</h3>
+                      <p>{service.description}</p>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
           <div className="process-strip" aria-label="Proceso de trabajo" data-reveal>
             <span>Cómo empezamos</span>
             <ol>
@@ -134,8 +148,8 @@ export default function Home() {
         <section id="sobre-mi" className="about shell" aria-labelledby="about-title">
           <div className="section-heading" data-reveal><span>03 / Sobre mí</span><h2 id="about-title">Diseño con intención.<br /><em>Desarrollo con propósito.</em></h2></div>
           <div className="about-grid">
-            <div className="identity-card" data-reveal><span className="identity-label">La persona detrás de Pamsb</span><span className="identity-monogram" aria-hidden="true">af<span>.</span></span><div><strong>Ángel Franco</strong><span>Creador de Pamsb · Diseño y desarrollo web</span><span className="identity-location"><MapPin aria-hidden="true" /> Oaxaca, México</span></div></div>
-            <div className="about-copy" data-reveal><h3>Hola, soy Ángel.</h3><p className="lead">Desde Oaxaca diseño y desarrollo sitios, catálogos y paneles para negocios y proyectos independientes. Me enfoco en que cada persona encuentre lo que necesita y pueda dar el siguiente paso con facilidad.</p><ul className="skills" aria-label="Áreas de trabajo"><li><Code2 aria-hidden="true" /> Desarrollo web</li><li>Diseño de interfaces</li><li>Diseño responsive</li><li>Dashboards</li></ul></div>
+            <div className="identity-card" data-reveal><span className="identity-label">La persona detrás de Pamsb</span><span className="identity-monogram" aria-hidden="true">af<span>.</span></span><div><strong>Ángel Franco</strong><span>Creador de Pamsb · Marketing digital y desarrollo web</span><span className="identity-location"><MapPin aria-hidden="true" /> Oaxaca, México</span></div></div>
+            <div className="about-copy" data-reveal><h3>Hola, soy Ángel.</h3><p className="lead">Desde Oaxaca llevo las redes, el contenido y el desarrollo web de negocios y proyectos independientes: desde las publicaciones y los videos hasta el sitio, el catálogo o el sistema que lo sostiene. Me enfoco en que cada persona encuentre lo que necesita y pueda dar el siguiente paso con facilidad.</p><ul className="skills" aria-label="Áreas de trabajo"><li><Code2 aria-hidden="true" /> Desarrollo web</li><li>Contenido y redes</li><li>Video</li><li>Anuncios en Meta</li><li>Diseño de interfaces</li><li>Dashboards</li></ul></div>
           </div>
         </section>
       </main>
@@ -146,7 +160,7 @@ export default function Home() {
           <div className="contact-grid" data-reveal>
             <h2>Tu idea puede<br /><em>empezar aquí.</em></h2>
             <div className="contact-copy">
-              <p>¿Quieres una página, un catálogo o una herramienta para tu equipo? Mándame un mensaje con tu idea y te digo qué camino conviene.</p>
+              <p>¿Quieres que te lleve las redes, una página, un catálogo o una herramienta para tu equipo? Mándame un mensaje con tu idea y te digo qué camino conviene.</p>
               <a className="button button-primary" href={whatsappQuote} target="_blank" rel="noopener noreferrer" aria-label="Cotiza tu proyecto por WhatsApp al +52 951 280 0070 (abre en otra pestaña)"><MessageCircle aria-hidden="true" /> Cotizar por WhatsApp <ArrowUpRight aria-hidden="true" /></a>
               <p className="contact-phone">+52 951 280 0070</p>
               <a className="contact-email" href={`mailto:${email}`}><Mail aria-hidden="true" /><span>{email.split("@")[0]}<wbr />@{email.split("@")[1]}</span><ArrowUpRight aria-hidden="true" /></a>
