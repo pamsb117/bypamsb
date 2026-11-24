@@ -17,7 +17,7 @@ export function ScrollMotion() {
 
     /* ---------- Reveal on enter (staggered) ---------- */
     const revealed = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
-    document.querySelectorAll<HTMLElement>(".service-grid, .project-grid").forEach((grid) => {
+    document.querySelectorAll<HTMLElement>(".service-grid, .project-grid, .testimonial-grid").forEach((grid) => {
       Array.from(grid.children).forEach((child, index) => (child as HTMLElement).style.setProperty("--i", String(index % 3)));
     });
     if (reducedMotion.matches || typeof IntersectionObserver === "undefined") {

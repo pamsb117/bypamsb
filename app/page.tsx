@@ -36,6 +36,11 @@ const serviceGroups = [
   },
 ];
 const marqueeItems = ["Redes sociales", "Videos", "Anuncios en Meta", "Identidad de marca", "Páginas web", "Catálogos", "Sistemas", "Asistentes con IA"];
+const testimonials = [
+  { quote: "Ángel entendió cómo hablarle a mis pacientes. Los carruseles explican los tratamientos sin asustar a nadie y mis redes por fin se ven como mi consultorio: profesionales y con mi estilo.", name: "Dra. Jael López", business: "Endodoncista · San Francisco Lachigoló", initials: "JL" },
+  { quote: "Antes los pedidos por WhatsApp eran un ir y venir de mensajes. Con el catálogo mis clientes eligen, ven el total y me mandan el pedido completo.", name: "Don Aurelio", business: "Antojitos y abarrotes · Oaxaca", initials: "DA" },
+  { quote: "Queríamos una página que se sintiera como el palenque. Ahora la gente ve los recorridos, la historia y cómo reservar en un solo lugar.", name: "3 Para el ES3", business: "Palenque · Santiago Matatlán", initials: "3" },
+];
 const workflow = [
   "Cuéntame qué necesitas.",
   "Diseño y preparo una primera versión.",
@@ -190,8 +195,20 @@ export default function Home() {
             </article>
           ))}</div>
         </section>
+        <section id="clientes" className="testimonials shell" aria-labelledby="testimonials-title">
+          <div className="section-heading" data-reveal><span>03 / Clientes</span><h2 id="testimonials-title"><span className="line"><span>Lo que dicen</span></span><span className="line"><span><em>quienes ya trabajaron conmigo.</em></span></span></h2></div>
+          <div className="testimonial-grid">
+            {testimonials.map((item) => (
+              <figure className="testimonial" key={item.name} data-reveal>
+                <span className="testimonial-mark" aria-hidden="true">“</span>
+                <blockquote>{item.quote}</blockquote>
+                <figcaption><span className="testimonial-avatar" aria-hidden="true">{item.initials}</span><span><strong>{item.name}</strong><span>{item.business}</span></span></figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
         <section id="sobre-mi" className="about shell" aria-labelledby="about-title">
-          <div className="section-heading" data-reveal><span>03 / Sobre mí</span><h2 id="about-title"><span className="line"><span>Diseño con intención.</span></span><span className="line"><span><em>Desarrollo con propósito.</em></span></span></h2></div>
+          <div className="section-heading" data-reveal><span>04 / Sobre mí</span><h2 id="about-title"><span className="line"><span>Diseño con intención.</span></span><span className="line"><span><em>Desarrollo con propósito.</em></span></span></h2></div>
           <div className="about-grid">
             <div className="identity-card" data-reveal><span className="identity-label">La persona detrás de Pamsb</span><span className="identity-monogram" aria-hidden="true">af<span>.</span></span><div><strong>Ángel Franco</strong><span>Creador de Pamsb · Marketing digital y desarrollo web</span><span className="identity-location"><MapPin aria-hidden="true" /> Oaxaca, México</span></div></div>
             <div className="about-copy" data-reveal><h3>Hola, soy Ángel.</h3><p className="lead">Desde Oaxaca llevo las redes, el contenido y el desarrollo web de negocios y proyectos independientes: desde las publicaciones y los videos hasta el sitio, el catálogo o el sistema que lo sostiene. Me enfoco en que cada persona encuentre lo que necesita y pueda dar el siguiente paso con facilidad.</p><ul className="skills" aria-label="Áreas de trabajo"><li><Code2 aria-hidden="true" /> Desarrollo web</li><li>Contenido y redes</li><li>Video</li><li>Anuncios en Meta</li><li>Diseño de interfaces</li><li>Dashboards</li></ul></div>
@@ -200,7 +217,7 @@ export default function Home() {
       </main>
       <footer id="contacto">
         <div className="shell contact">
-          <span className="footer-label">04 / Contacto</span>
+          <span className="footer-label">05 / Contacto</span>
           <code className="code-deco code-deco--footer" aria-hidden="true">{"cliente.escribe(\"Hola\") // → WhatsApp"}</code>
           <div className="contact-grid" data-reveal>
             <h2><span className="line"><span>Tu idea puede</span></span><span className="line"><span><em>empezar aquí.</em></span></span></h2>

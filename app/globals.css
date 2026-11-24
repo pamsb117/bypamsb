@@ -436,3 +436,17 @@ html.intro-seen .intro{display:none}
   .whatsapp-fab svg{width:22px;height:22px}
   html.show-fab .whatsapp-fab{opacity:1;transform:none;pointer-events:auto}
 }
+
+/* Testimonials */
+.testimonials{padding:40px 0 70px}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.testimonial{position:relative;margin:0;padding:30px 28px 26px;display:flex;flex-direction:column;gap:26px;background:var(--glass-bg);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);border:var(--glass-border);border-radius:var(--radius);overflow:hidden}
+.testimonial-mark{position:absolute;top:-28px;right:18px;font-family:var(--font-display);font-size:150px;line-height:1;color:var(--violet);opacity:.22;pointer-events:none}
+.testimonial blockquote{margin:0;flex:1;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.6;color:var(--text);text-wrap:pretty}
+.testimonial figcaption{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid var(--line)}
+.testimonial figcaption>span:last-child{display:flex;flex-direction:column;gap:4px}
+.testimonial strong{font-family:var(--font-display);font-size:14px;font-weight:600}
+.testimonial figcaption>span:last-child>span{font-size:11px;color:var(--text-2);letter-spacing:.04em}
+.testimonial-avatar{display:grid;place-items:center;width:44px;height:44px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--navy));font-family:var(--font-display);font-size:13px;font-weight:700;color:#fff;box-shadow:var(--neu-sm)}
+@media(max-width:1024px){.testimonial-grid{grid-template-columns:1fr}.testimonial blockquote{font-size:16px}}
+@media(max-width:760px){.testimonials{padding:20px 0 50px}.testimonial{padding:24px 20px 20px}}
