@@ -4,6 +4,10 @@ import { ScrollMotion } from "@/components/scroll-motion";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const email = "angeldejesus.franco20@gmail.com";
+const socialLinks = [
+  { label: "TikTok", handle: "@pamsb_", href: "https://www.tiktok.com/@pamsb_", path: "M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.6 2.6 0 0 1-2.59-2.6 2.6 2.6 0 0 1 3.35-2.48V9.66a5.69 5.69 0 0 0-6.45 5.64A5.69 5.69 0 0 0 9.86 21a5.69 5.69 0 0 0 5.68-5.68V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48Z" },
+  { label: "GitHub", handle: "pamsb117", href: "https://github.com/pamsb117", path: "M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" },
+];
 const whatsappQuote = `https://wa.me/529512800070?text=${encodeURIComponent("Hola Ángel, vi tu portafolio y quiero cotizar un proyecto digital.")}`;
 const serviceGroups = [
   {
@@ -164,6 +168,15 @@ export default function Home() {
               <a className="button button-primary" href={whatsappQuote} target="_blank" rel="noopener noreferrer" aria-label="Cotiza tu proyecto por WhatsApp al +52 951 280 0070 (abre en otra pestaña)"><MessageCircle aria-hidden="true" /> Cotizar por WhatsApp <ArrowUpRight aria-hidden="true" /></a>
               <p className="contact-phone">+52 951 280 0070</p>
               <a className="contact-email" href={`mailto:${email}`}><Mail aria-hidden="true" /><span>{email.split("@")[0]}<wbr />@{email.split("@")[1]}</span><ArrowUpRight aria-hidden="true" /></a>
+              <div className="contact-social">
+                {socialLinks.map((social) => (
+                  <a key={social.label} className="contact-email" href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`${social.label} ${social.handle} (abre en otra pestaña)`}>
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={social.path} /></svg>
+                    <span>{social.handle}</span>
+                    <ArrowUpRight aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
           <div className="footer-bottom"><span>© 2026 Pamsb · Ángel Franco</span><span><MapPin aria-hidden="true" /> Oaxaca, México</span><a href="#inicio">Volver al inicio ↑</a></div>
