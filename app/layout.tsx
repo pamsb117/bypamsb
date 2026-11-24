@@ -30,7 +30,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: "try{var k='pamsb-intro';if(sessionStorage.getItem(k))document.documentElement.classList.add('intro-seen');else sessionStorage.setItem(k,'1')}catch(e){document.documentElement.classList.add('intro-seen')}" }} />
+      </head>
       <body className="antialiased">
         <div className="ambient" aria-hidden="true"><span /><span /><span /></div>
         {children}

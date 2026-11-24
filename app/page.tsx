@@ -35,6 +35,7 @@ const serviceGroups = [
     ],
   },
 ];
+const marqueeItems = ["Redes sociales", "Videos", "Anuncios en Meta", "Identidad de marca", "Páginas web", "Catálogos", "Sistemas", "Asistentes con IA"];
 const workflow = [
   "Cuéntame qué necesitas.",
   "Diseño y preparo una primera versión.",
@@ -98,11 +99,11 @@ const projects = [
 const spiderWeb = (
   <svg className="spider-web" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
     <g fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round">
-      <path d="M200 0 0 0M200 0 20 90M200 0 70 160M200 0 140 195M200 0 200 200" />
-      <path d="M170 0Q176 16 173 26Q184 28 200 30" />
-      <path d="M130 0Q140 30 133 46Q148 60 157 69Q170 64 200 64" />
-      <path d="M88 0Q100 42 92 64Q118 88 118 108Q150 112 200 106" />
-      <path d="M44 0Q60 56 50 82Q86 118 90 142Q124 150 200 146" />
+      <path d="M200 0 0 0M200 0 20 90M200 0 70 160M200 0 140 195M200 0 200 200" pathLength={1} />
+      <path d="M170 0Q176 16 173 26Q184 28 200 30" pathLength={1} />
+      <path d="M130 0Q140 30 133 46Q148 60 157 69Q170 64 200 64" pathLength={1} />
+      <path d="M88 0Q100 42 92 64Q118 88 118 108Q150 112 200 106" pathLength={1} />
+      <path d="M44 0Q60 56 50 82Q86 118 90 142Q124 150 200 146" pathLength={1} />
     </g>
   </svg>
 );
@@ -110,6 +111,11 @@ const spiderWeb = (
 export default function Home() {
   return (
     <>
+      <div className="intro" aria-hidden="true">
+        <div className="intro-brand"><span className="line"><span>Pamsb<i>.</i></span></span></div>
+        <div className="intro-meta"><span>Redes · Video · Web · Sistemas</span><span className="intro-count" /></div>
+        <div className="intro-bar"><span /></div>
+      </div>
       <ScrollMotion />
       <a className="skip-link" href="#contenido">Saltar al contenido</a>
       <header className="site-header">
@@ -122,15 +128,24 @@ export default function Home() {
           {spiderWeb}
           <div className="eyebrow"><span>Pamsb · Marketing y desarrollo para negocios</span><span>Oaxaca, México</span></div>
           <code className="code-deco code-deco--hero" aria-hidden="true">{"<Negocio online={true} />"}</code>
-          <h1 id="hero-title">Tu negocio.<br />Su próxima <em>versión digital.</em></h1>
+          <h1 id="hero-title"><span className="line"><span>Tu negocio.</span></span><span className="line"><span>Su próxima <em>versión digital.</em></span></span></h1>
           <div className="hero-bottom">
             <p>Manejo tus redes, creo tus videos y desarrollo páginas web, catálogos y sistemas para que tu negocio se vea bien y tus clientes te encuentren.</p>
             <div className="hero-actions"><a className="button button-primary" href={whatsappQuote} target="_blank" rel="noopener noreferrer"><MessageCircle aria-hidden="true" /> Cotiza por WhatsApp</a><a className="button button-glass" href="#proyectos">Ver proyectos <ArrowDownRight aria-hidden="true" /></a></div>
           </div>
           <div className="hero-index" aria-label="Especialidades"><span>Contenido que atrae</span><span>Sitios que presentan</span><span>Sistemas que organizan</span></div>
         </section>
+        <div className="marquee" aria-hidden="true">
+          {[0, 1].map((row) => (
+            <div className={`marquee-row marquee-row--${row}`} key={row}>
+              <div className="marquee-track">
+                {[...marqueeItems, ...marqueeItems].map((item, index) => <span key={index}>{item}<i>✦</i></span>)}
+              </div>
+            </div>
+          ))}
+        </div>
         <section id="servicios" className="services shell" aria-labelledby="services-title">
-          <div className="section-heading" data-reveal><span>01 / Servicios</span><h2 id="services-title">Lo que puedes pedir.<br /><em>Sin vueltas.</em></h2></div>
+          <div className="section-heading" data-reveal><span>01 / Servicios</span><h2 id="services-title"><span className="line"><span>Lo que puedes pedir.</span></span><span className="line"><span><em>Sin vueltas.</em></span></span></h2></div>
           {serviceGroups.map((group) => (
             <div className="service-group" key={group.label}>
               <h3 className="service-group-label" data-reveal>{group.label}</h3>
@@ -156,7 +171,7 @@ export default function Home() {
           </div>
         </section>
         <section id="proyectos" className="projects shell" aria-labelledby="projects-title">
-          <div className="section-heading" data-reveal><span>02 / Proyectos seleccionados</span><h2 id="projects-title">Ideas distintas.<br /><em>Soluciones a medida.</em></h2></div>
+          <div className="section-heading" data-reveal><span>02 / Proyectos seleccionados</span><h2 id="projects-title"><span className="line"><span>Ideas distintas.</span></span><span className="line"><span><em>Soluciones a medida.</em></span></span></h2></div>
           <div className="project-grid">{projects.map((project) => (
             <article className={`project${project.private ? " project--featured" : ""}`} key={project.number} aria-labelledby={`project-${project.number}`} data-reveal>
               <div className="project-topline"><span>{project.number} / {project.private ? "Proyecto destacado" : project.type}</span>{project.private && <span className="private-badge"><LockKeyhole aria-hidden="true" /> Uso interno</span>}</div>
@@ -176,7 +191,7 @@ export default function Home() {
           ))}</div>
         </section>
         <section id="sobre-mi" className="about shell" aria-labelledby="about-title">
-          <div className="section-heading" data-reveal><span>03 / Sobre mí</span><h2 id="about-title">Diseño con intención.<br /><em>Desarrollo con propósito.</em></h2></div>
+          <div className="section-heading" data-reveal><span>03 / Sobre mí</span><h2 id="about-title"><span className="line"><span>Diseño con intención.</span></span><span className="line"><span><em>Desarrollo con propósito.</em></span></span></h2></div>
           <div className="about-grid">
             <div className="identity-card" data-reveal><span className="identity-label">La persona detrás de Pamsb</span><span className="identity-monogram" aria-hidden="true">af<span>.</span></span><div><strong>Ángel Franco</strong><span>Creador de Pamsb · Marketing digital y desarrollo web</span><span className="identity-location"><MapPin aria-hidden="true" /> Oaxaca, México</span></div></div>
             <div className="about-copy" data-reveal><h3>Hola, soy Ángel.</h3><p className="lead">Desde Oaxaca llevo las redes, el contenido y el desarrollo web de negocios y proyectos independientes: desde las publicaciones y los videos hasta el sitio, el catálogo o el sistema que lo sostiene. Me enfoco en que cada persona encuentre lo que necesita y pueda dar el siguiente paso con facilidad.</p><ul className="skills" aria-label="Áreas de trabajo"><li><Code2 aria-hidden="true" /> Desarrollo web</li><li>Contenido y redes</li><li>Video</li><li>Anuncios en Meta</li><li>Diseño de interfaces</li><li>Dashboards</li></ul></div>
@@ -188,7 +203,7 @@ export default function Home() {
           <span className="footer-label">04 / Contacto</span>
           <code className="code-deco code-deco--footer" aria-hidden="true">{"cliente.escribe(\"Hola\") // → WhatsApp"}</code>
           <div className="contact-grid" data-reveal>
-            <h2>Tu idea puede<br /><em>empezar aquí.</em></h2>
+            <h2><span className="line"><span>Tu idea puede</span></span><span className="line"><span><em>empezar aquí.</em></span></span></h2>
             <div className="contact-copy">
               <p>¿Quieres que te lleve las redes, una página, un catálogo o una herramienta para tu equipo? Mándame un mensaje con tu idea y te digo qué camino conviene.</p>
               <a className="button button-primary" href={whatsappQuote} target="_blank" rel="noopener noreferrer" aria-label="Cotiza tu proyecto por WhatsApp al +52 951 280 0070 (abre en otra pestaña)"><MessageCircle aria-hidden="true" /> Cotizar por WhatsApp <ArrowUpRight aria-hidden="true" /></a>
