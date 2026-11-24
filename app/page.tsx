@@ -57,7 +57,16 @@ const projects = [
     solution: "Un portal con navegación por áreas y una vista ejecutiva que reúne información para el seguimiento operativo.",
   },
   {
-    number: "02", title: "Don Aurelio", type: "Catálogo digital · Pedidos por WhatsApp", private: false,
+    number: "02", title: "Conoxxo · App de RH", type: "App móvil · Plaza Oaxaca", private: true,
+    image: "/projects/conoxxo-app.webp", width: 1604, height: 906,
+    imageAlt: "Pantallas de bienvenida e inicio de sesión de Conoxxo, la app de RH de OXXO Plaza Oaxaca, con su mascota el osito",
+    detail: "Desarrollé una app para los empleados de la plaza: preguntan dudas del reglamento como se las dirían a un compañero y consultan avisos, vacaciones y el directorio desde su celular.",
+    challenge: "Que cada colaborador resolviera dudas del reglamento y trámites de RH sin tener que preguntar en persona, y que solo el personal de la nómina pudiera entrar.",
+    role: "Diseñé y desarrollé la app con React Native y Expo, el acceso con número de empleado y PIN, la base de datos y el panel para que RH publique avisos y administre accesos.",
+    solution: "Una app instalable con chat del reglamento que cita cada artículo, avisos con imágenes, vacaciones, votaciones, actas con firma y directorio.",
+  },
+  {
+    number: "03", tone: "02", title: "Don Aurelio", type: "Catálogo digital · Pedidos por WhatsApp", private: false,
     image: "/projects/don-aurelio-catalogo.webp", width: 1265, height: 712,
     imageAlt: "Catálogo Don Aurelio con productos, búsqueda y resumen del pedido", href: "https://pamsb117.github.io/CatalogoWats/",
     detail: "Diseñé un catálogo con buscador y carrito que prepara el pedido para enviarlo por WhatsApp.",
@@ -66,7 +75,7 @@ const projects = [
     solution: "El cliente elige productos y cantidades; el carrito prepara un mensaje para continuar el pedido por WhatsApp.",
   },
   {
-    number: "03", title: "3 Para el ES3", type: "Turismo · Mezcal artesanal", private: false,
+    number: "04", tone: "03", title: "3 Para el ES3", type: "Turismo · Mezcal artesanal", private: false,
     image: "/projects/mezcal-3es3.webp", width: 1265, height: 712,
     imageAlt: "Portada del sitio 3 Para el ES3, experiencias de mezcal en Santiago Matatlán, Oaxaca", href: "https://pamsb117.github.io/Mezcal3es3/",
     detail: "Creé un sitio para mostrar el palenque y facilitar la consulta de sus recorridos de mezcal.",
@@ -75,7 +84,7 @@ const projects = [
     solution: "Una experiencia visual que reúne la historia, los recorridos y la información del proyecto en un mismo lugar.",
   },
   {
-    number: "04", title: "Dra. Jael López", type: "Redes sociales · Consultorio dental", private: false,
+    number: "05", tone: "04", title: "Dra. Jael López", type: "Redes sociales · Consultorio dental", private: false,
     image: "/projects/dra-jael-lopez-redes.webp", width: 1265, height: 712,
     imageAlt: "Publicaciones de Instagram de la Dra. Jael López: carruseles sobre endodoncia, limpieza dental y salud bucal, y reels del consultorio",
     href: "https://www.instagram.com/drajaellopez/", linkLabel: "Ver Instagram",
@@ -89,7 +98,7 @@ const projects = [
     solution: "Un perfil consistente que resuelve dudas frecuentes de pacientes y muestra el consultorio, con destacadas por tratamiento y testimonios.",
   },
   {
-    number: "05", title: "Gato Mamado", type: "Proyecto propio · Reels animados de fitness", private: false,
+    number: "06", tone: "05", title: "Gato Mamado", type: "Proyecto propio · Reels animados de fitness", private: false,
     image: "/projects/gato-mamado-fitness.webp", width: 1265, height: 712,
     imageAlt: "Reels animados de Gato Mamado: dos gatos personajes presentan tops de proteína, músculos y mitos del gym",
     href: "https://www.instagram.com/pamsbcat/", linkLabel: "Ver Instagram",
@@ -185,7 +194,7 @@ export default function Home() {
                 {project.href && <div className="project-links"><a className="project-site-link" href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.linkLabel ?? "Explorar sitio"} de ${project.title} (abre en otra pestaña)`}>{project.linkLabel ?? "Explorar sitio"} <ArrowUpRight aria-hidden="true" /></a>
                 {project.socials?.map((social) => <a key={social.label} className="project-site-link" href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`${social.label} de ${project.title} (abre en otra pestaña)`}>{social.label} <ArrowUpRight aria-hidden="true" /></a>)}</div>}
               </div>
-              <ProjectPreview title={project.title} src={`${basePath}${project.image}`} alt={project.imageAlt} width={project.width} height={project.height} confidential={project.private} tone={project.private ? "project-visual--private" : `project-visual--${project.number}`} />
+              <ProjectPreview title={project.title} src={`${basePath}${project.image}`} alt={project.imageAlt} width={project.width} height={project.height} confidential={project.private} tone={project.private ? "project-visual--private" : `project-visual--${project.tone ?? project.number}`} />
               <p className="project-intro">{project.detail}</p>
               <details className="project-details">
                 <summary>Cómo se hizo <ArrowDownRight aria-hidden="true" /></summary>
