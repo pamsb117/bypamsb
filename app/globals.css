@@ -460,3 +460,51 @@ html.intro-seen .intro{display:none}
 .reel:nth-child(2){transform:rotate(3deg) translateY(-8px)}
 .reel video{display:block;width:100%;height:100%;object-fit:cover;border-radius:20px;background:#1a1d26}
 @media(max-width:760px){.reel{border-radius:18px;padding:4px}.reel video{border-radius:14px}}
+
+/* ==========================================================
+   Lighter layout (compact services, paired projects)
+   ========================================================== */
+.service-group-card{min-height:0;padding:26px 24px}
+.service-group-card h3{font-family:var(--font-mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--lilac);margin:0 0 18px}
+.service-group-card ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.service-group-card li{display:flex;align-items:flex-start;gap:14px;padding:14px 0}
+.service-group-card li+li{border-top:1px solid var(--line)}
+.service-group-card .service-icon{width:42px;height:42px;border-radius:13px;margin:0;flex-shrink:0;box-shadow:var(--neu-sm)}
+.service-group-card .service-icon svg{width:18px;height:18px}
+.service-group-card li>span:last-child{display:flex;flex-direction:column;gap:4px;min-width:0}
+.service-group-card strong{font-family:var(--font-display);font-size:15px;font-weight:600;line-height:1.3;color:var(--text)}
+.service-group-card li>span:last-child>span{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:13.5px;line-height:1.5;color:var(--text-2)}
+.services .process-strip{margin-top:22px}
+
+.project--featured{grid-column:auto}
+.project--featured .project-heading h3{font-size:clamp(22px,2.3vw,32px)}
+.project--featured .project-story{grid-template-columns:1fr;gap:18px}
+.project-heading{min-height:0}
+.project-links{justify-content:flex-start;margin-top:14px}
+.project-confidentiality{margin-top:16px}
+.marquee{padding:14px 0}
+
+.about-grid{display:block;padding-left:calc((100% - 24px) / 3 + 24px)}
+.about-copy{padding:0}
+@media(max-width:1024px){.service-grid{grid-template-columns:1fr}.service-group-card ul{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 20px}.service-group-card li+li{border-top:0}}
+@media(max-width:760px){
+  .service-group-card{padding:20px 18px}
+  .service-group-card ul{grid-template-columns:1fr}
+  .service-group-card li{padding:12px 0}
+  .service-group-card li+li{border-top:1px solid var(--line)}
+  .about-grid{padding-left:0}
+  .hero-bottom{margin-bottom:0}
+}
+
+/* Mobile carousels for projects and testimonials */
+.swipe-hint{display:none}
+@media(max-width:760px){
+  .swipe-hint{display:block;margin:-6px 0 14px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--lilac)}
+  .project-grid,.testimonial-grid{display:flex;gap:14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:16px;margin-inline:-16px;padding:4px 16px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .project-grid::-webkit-scrollbar,.testimonial-grid::-webkit-scrollbar{display:none}
+  .project,.testimonial{flex:0 0 86%;min-width:0;scroll-snap-align:start}
+  .testimonial-grid{align-items:stretch}
+  html.motion-ready .project[data-reveal],html.motion-ready .testimonial[data-reveal]{translate:none;opacity:1}
+  html.motion-ready .project[data-reveal] .project-visual{clip-path:none}
+  html.motion-ready .project[data-reveal] .project-preview{scale:1}
+}

@@ -145,16 +145,14 @@ export default function Home() {
         <section id="inicio" className="hero shell" aria-labelledby="hero-title">
           {spiderWeb}
           <div className="eyebrow"><span>Pamsb · Marketing y desarrollo para negocios</span><span>Oaxaca, México</span></div>
-          <code className="code-deco code-deco--hero" aria-hidden="true">{"<Negocio online={true} />"}</code>
           <h1 id="hero-title"><span className="line"><span>Tu negocio.</span></span><span className="line"><span>Su próxima <em>versión digital.</em></span></span></h1>
           <div className="hero-bottom">
             <p>Manejo tus redes, creo tus videos y desarrollo páginas web, catálogos y sistemas para que tu negocio se vea bien y tus clientes te encuentren.</p>
             <div className="hero-actions"><a className="button button-primary" href={whatsappQuote} target="_blank" rel="noopener noreferrer"><MessageCircle aria-hidden="true" /> Cotiza por WhatsApp</a><a className="button button-glass" href="#proyectos">Ver proyectos <ArrowDownRight aria-hidden="true" /></a></div>
           </div>
-          <div className="hero-index" aria-label="Especialidades"><span>Contenido que atrae</span><span>Sitios que presentan</span><span>Sistemas que organizan</span></div>
         </section>
         <div className="marquee" aria-hidden="true">
-          {[0, 1].map((row) => (
+          {[0].map((row) => (
             <div className={`marquee-row marquee-row--${row}`} key={row}>
               <div className="marquee-track">
                 {[...marqueeItems, ...marqueeItems].map((item, index) => <span key={index}>{item}<i>✦</i></span>)}
@@ -164,23 +162,24 @@ export default function Home() {
         </div>
         <section id="servicios" className="services shell" aria-labelledby="services-title">
           <div className="section-heading" data-reveal><span>01 / Servicios</span><h2 id="services-title"><span className="line"><span>Lo que puedes pedir.</span></span><span className="line"><span><em>Sin vueltas.</em></span></span></h2></div>
-          {serviceGroups.map((group) => (
-            <div className="service-group" key={group.label}>
-              <h3 className="service-group-label" data-reveal>{group.label}</h3>
-              <div className="service-grid">
-                {group.items.map((service) => {
-                  const Icon = service.icon;
-                  return (
-                    <article className="service-card" key={service.title} data-reveal>
-                      <div className="service-icon"><Icon aria-hidden="true" /></div>
-                      <h3>{service.title}</h3>
-                      <p>{service.description}</p>
-                    </article>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
+          <div className="service-grid">
+            {serviceGroups.map((group) => (
+              <article className="service-card service-group-card" key={group.label} data-reveal>
+                <h3>{group.label}</h3>
+                <ul>
+                  {group.items.map((service) => {
+                    const Icon = service.icon;
+                    return (
+                      <li key={service.title}>
+                        <span className="service-icon"><Icon aria-hidden="true" /></span>
+                        <span><strong>{service.title}</strong><span>{service.description}</span></span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </article>
+            ))}
+          </div>
           <div className="process-strip" aria-label="Proceso de trabajo" data-reveal>
             <span>Cómo empezamos</span>
             <ol>
@@ -190,13 +189,12 @@ export default function Home() {
         </section>
         <section id="proyectos" className="projects shell" aria-labelledby="projects-title">
           <div className="section-heading" data-reveal><span>02 / Proyectos seleccionados</span><h2 id="projects-title"><span className="line"><span>Ideas distintas.</span></span><span className="line"><span><em>Soluciones a medida.</em></span></span></h2></div>
+          <p className="swipe-hint" aria-hidden="true">Desliza para ver más →</p>
           <div className="project-grid">{projects.map((project) => (
             <article className={`project${project.private ? " project--featured" : ""}`} key={project.number} aria-labelledby={`project-${project.number}`} data-reveal>
-              <div className="project-topline"><span>{project.number} / {project.private ? "Proyecto destacado" : project.type}</span>{project.private && <span className="private-badge"><LockKeyhole aria-hidden="true" /> Uso interno</span>}</div>
+              <div className="project-topline"><span>{project.number} / {project.type}</span>{project.private && <span className="private-badge"><LockKeyhole aria-hidden="true" /> Uso interno</span>}</div>
               <div className="project-heading">
                 <h3 id={`project-${project.number}`}>{project.title}</h3>
-                {project.href && <div className="project-links"><a className="project-site-link" href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.linkLabel ?? "Explorar sitio"} de ${project.title} (abre en otra pestaña)`}>{project.linkLabel ?? "Explorar sitio"} <ArrowUpRight aria-hidden="true" /></a>
-                {project.socials?.map((social) => <a key={social.label} className="project-site-link" href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`${social.label} de ${project.title} (abre en otra pestaña)`}>{social.label} <ArrowUpRight aria-hidden="true" /></a>)}</div>}
               </div>
               {project.videos ? (
                 <div className={`project-visual project-reels project-visual--${project.tone}`}>
@@ -211,16 +209,19 @@ export default function Home() {
                 </div>
               ) : <ProjectPreview title={project.title} src={`${basePath}${project.image}`} alt={project.imageAlt} width={project.width} height={project.height} confidential={project.private} tone={project.private ? "project-visual--private" : `project-visual--${project.tone ?? project.number}`} />}
               <p className="project-intro">{project.detail}</p>
+                {project.href && <div className="project-links"><a className="project-site-link" href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.linkLabel ?? "Explorar sitio"} de ${project.title} (abre en otra pestaña)`}>{project.linkLabel ?? "Explorar sitio"} <ArrowUpRight aria-hidden="true" /></a>
+                {project.socials?.map((social) => <a key={social.label} className="project-site-link" href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`${social.label} de ${project.title} (abre en otra pestaña)`}>{social.label} <ArrowUpRight aria-hidden="true" /></a>)}</div>}
               <details className="project-details">
                 <summary>Cómo se hizo <ArrowDownRight aria-hidden="true" /></summary>
                 <dl className="project-story"><div><dt>El reto</dt><dd>{project.challenge}</dd></div><div><dt>Mi trabajo</dt><dd>{project.role}</dd></div><div><dt>La solución</dt><dd>{project.solution}</dd></div></dl>
               </details>
-              {project.private && <p className="project-confidentiality"><LockKeyhole aria-hidden="true" /><span>Proyecto de uso interno. Solo muestro una captura, sin acceso al sistema ni a sus datos. OXXO identifica el proyecto y no avala este portafolio.</span></p>}
+              {project.private && <p className="project-confidentiality"><LockKeyhole aria-hidden="true" /><span>Uso interno: solo muestro capturas, sin acceso al sistema ni a sus datos. OXXO no avala este portafolio.</span></p>}
             </article>
           ))}</div>
         </section>
         <section id="clientes" className="testimonials shell" aria-labelledby="testimonials-title">
           <div className="section-heading" data-reveal><span>03 / Clientes</span><h2 id="testimonials-title"><span className="line"><span>Lo que dicen</span></span><span className="line"><span><em>quienes ya trabajaron conmigo.</em></span></span></h2></div>
+          <p className="swipe-hint" aria-hidden="true">Desliza para ver más →</p>
           <div className="testimonial-grid">
             {testimonials.map((item) => (
               <figure className="testimonial" key={item.name} data-reveal>
@@ -234,15 +235,13 @@ export default function Home() {
         <section id="sobre-mi" className="about shell" aria-labelledby="about-title">
           <div className="section-heading" data-reveal><span>04 / Sobre mí</span><h2 id="about-title"><span className="line"><span>Diseño con intención.</span></span><span className="line"><span><em>Desarrollo con propósito.</em></span></span></h2></div>
           <div className="about-grid">
-            <div className="identity-card" data-reveal><span className="identity-label">La persona detrás de Pamsb</span><span className="identity-monogram" aria-hidden="true">af<span>.</span></span><div><strong>Ángel Franco</strong><span>Creador de Pamsb · Marketing digital y desarrollo web</span><span className="identity-location"><MapPin aria-hidden="true" /> Oaxaca, México</span></div></div>
-            <div className="about-copy" data-reveal><h3>Hola, soy Ángel.</h3><p className="lead">Desde Oaxaca llevo las redes, el contenido y el desarrollo web de negocios y proyectos independientes: desde las publicaciones y los videos hasta el sitio, el catálogo o el sistema que lo sostiene. Me enfoco en que cada persona encuentre lo que necesita y pueda dar el siguiente paso con facilidad.</p><ul className="skills" aria-label="Áreas de trabajo"><li><Code2 aria-hidden="true" /> Desarrollo web</li><li>Contenido y redes</li><li>Video</li><li>Anuncios en Meta</li><li>Diseño de interfaces</li><li>Dashboards</li></ul></div>
+            <div className="about-copy" data-reveal><h3>Hola, soy Ángel Franco.</h3><p className="lead">Desde Oaxaca llevo las redes, el contenido y el desarrollo web de negocios y proyectos independientes: desde las publicaciones y los videos hasta el sitio, el catálogo o el sistema que lo sostiene. Me enfoco en que cada persona encuentre lo que necesita y pueda dar el siguiente paso con facilidad.</p><ul className="skills" aria-label="Áreas de trabajo"><li><Code2 aria-hidden="true" /> Desarrollo web</li><li>Contenido y redes</li><li>Video</li><li>Anuncios en Meta</li><li>Diseño de interfaces</li><li>Dashboards</li></ul></div>
           </div>
         </section>
       </main>
       <footer id="contacto">
         <div className="shell contact">
           <span className="footer-label">05 / Contacto</span>
-          <code className="code-deco code-deco--footer" aria-hidden="true">{"cliente.escribe(\"Hola\") // → WhatsApp"}</code>
           <div className="contact-grid" data-reveal>
             <h2><span className="line"><span>Tu idea puede</span></span><span className="line"><span><em>empezar aquí.</em></span></span></h2>
             <div className="contact-copy">
