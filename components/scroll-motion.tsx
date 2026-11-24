@@ -36,6 +36,7 @@ export function ScrollMotion() {
     }
 
     /* ---------- Scroll progress + marquee velocity ---------- */
+    const contact = document.getElementById("contacto");
     const tracks = Array.from(document.querySelectorAll<HTMLElement>(".marquee-track"));
     let lastY = window.scrollY;
     let velocity = 0;
@@ -45,6 +46,8 @@ export function ScrollMotion() {
       const y = window.scrollY;
       const scrollable = Math.max(1, root.scrollHeight - window.innerHeight);
       root.style.setProperty("--page-progress", String(clamp(y / scrollable)));
+      const contactTop = contact ? contact.getBoundingClientRect().top : Infinity;
+      root.classList.toggle("show-fab", y > window.innerHeight * 0.8 && contactTop > window.innerHeight * 0.85);
       velocity = velocity * 0.85 + (y - lastY) * 0.15;
       lastY = y;
       if (!reducedMotion.matches) {
@@ -108,7 +111,7 @@ export function ScrollMotion() {
 
     return () => {
       cleanups.forEach((cleanup) => cleanup());
-      root.classList.remove("motion-ready");
+      root.classList.remove("motion-ready", "show-fab");
       root.style.removeProperty("--page-progress");
     };
   }, []);

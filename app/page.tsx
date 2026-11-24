@@ -44,7 +44,7 @@ const workflow = [
 const projects = [
   {
     number: "01", title: "OXXO · Torre de Control", type: "Sistema empresarial · Plaza Oaxaca", private: true,
-    image: "/projects/oxxo-torre-control-2026.png", width: 1604, height: 906,
+    image: "/projects/oxxo-torre-control-2026.webp", width: 1604, height: 906,
     imageAlt: "Captura del portal OXXO Torre de Control de Plaza Oaxaca, con navegación por áreas y tarjetas de dashboards diarios",
     detail: "Diseñé un portal que reúne indicadores de distintas áreas y los conecta con Google Sheets.",
     challenge: "Organizar la consulta de indicadores de distintas áreas en una interfaz común y fácil de recorrer.",
@@ -53,7 +53,7 @@ const projects = [
   },
   {
     number: "02", title: "Don Aurelio", type: "Catálogo digital · Pedidos por WhatsApp", private: false,
-    image: "/projects/don-aurelio-catalogo.png", width: 1265, height: 712,
+    image: "/projects/don-aurelio-catalogo.webp", width: 1265, height: 712,
     imageAlt: "Catálogo Don Aurelio con productos, búsqueda y resumen del pedido", href: "https://pamsb117.github.io/CatalogoWats/",
     detail: "Diseñé un catálogo con buscador y carrito que prepara el pedido para enviarlo por WhatsApp.",
     challenge: "Facilitar la consulta de productos y reunir un pedido sin depender de un intercambio de mensajes por cada artículo.",
@@ -62,7 +62,7 @@ const projects = [
   },
   {
     number: "03", title: "3 Para el ES3", type: "Turismo · Mezcal artesanal", private: false,
-    image: "/projects/mezcal-3es3.png", width: 1265, height: 712,
+    image: "/projects/mezcal-3es3.webp", width: 1265, height: 712,
     imageAlt: "Portada del sitio 3 Para el ES3, experiencias de mezcal en Santiago Matatlán, Oaxaca", href: "https://pamsb117.github.io/Mezcal3es3/",
     detail: "Creé un sitio para mostrar el palenque y facilitar la consulta de sus recorridos de mezcal.",
     challenge: "Presentar la identidad del palenque y explicar sus experiencias de forma clara para quien planea una visita.",
@@ -71,7 +71,7 @@ const projects = [
   },
   {
     number: "04", title: "Dra. Jael López", type: "Redes sociales · Consultorio dental", private: false,
-    image: "/projects/dra-jael-lopez-redes.png", width: 1265, height: 712,
+    image: "/projects/dra-jael-lopez-redes.webp", width: 1265, height: 712,
     imageAlt: "Publicaciones de Instagram de la Dra. Jael López: carruseles sobre endodoncia, limpieza dental y salud bucal, y reels del consultorio",
     href: "https://www.instagram.com/drajaellopez/", linkLabel: "Ver Instagram",
     socials: [
@@ -85,7 +85,7 @@ const projects = [
   },
   {
     number: "05", title: "Gato Mamado", type: "Proyecto propio · Reels animados de fitness", private: false,
-    image: "/projects/gato-mamado-fitness.png", width: 1265, height: 712,
+    image: "/projects/gato-mamado-fitness.webp", width: 1265, height: 712,
     imageAlt: "Reels animados de Gato Mamado: dos gatos personajes presentan tops de proteína, músculos y mitos del gym",
     href: "https://www.instagram.com/pamsbcat/", linkLabel: "Ver Instagram",
     socials: [{ label: "TikTok", href: "https://www.tiktok.com/@pamsb_" }],
@@ -223,6 +223,7 @@ export default function Home() {
           <div className="footer-bottom"><span>© 2026 Pamsb · Ángel Franco</span><span><MapPin aria-hidden="true" /> Oaxaca, México</span><a href="#inicio">Volver al inicio ↑</a></div>
         </div>
       </footer>
+      <a className="whatsapp-fab" href={whatsappQuote} target="_blank" rel="noopener noreferrer" aria-label="Cotizar por WhatsApp (abre en otra pestaña)"><MessageCircle aria-hidden="true" /><span>Cotizar</span></a>
     </>
   );
 }
