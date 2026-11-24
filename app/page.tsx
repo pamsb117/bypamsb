@@ -68,6 +68,31 @@ const projects = [
     role: "Diseñé y desarrollé el sitio, su estructura de contenido y su presentación en computadora y celular.",
     solution: "Una experiencia visual que reúne la historia, los recorridos y la información del proyecto en un mismo lugar.",
   },
+  {
+    number: "04", title: "Dra. Jael López", type: "Redes sociales · Consultorio dental", private: false,
+    image: "/projects/dra-jael-lopez-redes.png", width: 1265, height: 712,
+    imageAlt: "Publicaciones de Instagram de la Dra. Jael López: carruseles sobre endodoncia, limpieza dental y salud bucal, y reels del consultorio",
+    href: "https://www.instagram.com/drajaellopez/", linkLabel: "Ver Instagram",
+    socials: [
+      { label: "TikTok", href: "https://www.tiktok.com/@drajaellopez" },
+      { label: "Facebook", href: "https://www.facebook.com/DentistaJael" },
+    ],
+    detail: "Llevo las redes de una especialista en endodoncia en Oaxaca: carruseles educativos y reels para Instagram, TikTok y Facebook.",
+    challenge: "Explicar tratamientos que suelen dar miedo, como la endodoncia, de forma clara y generar confianza antes de la primera consulta.",
+    role: "Planeo el contenido, diseño los carruseles con su identidad visual, edito los reels y organizo las publicaciones en las tres redes.",
+    solution: "Un perfil consistente que resuelve dudas frecuentes de pacientes y muestra el consultorio, con destacadas por tratamiento y testimonios.",
+  },
+  {
+    number: "05", title: "Gato Mamado", type: "Proyecto propio · Reels animados de fitness", private: false,
+    image: "/projects/gato-mamado-fitness.png", width: 1265, height: 712,
+    imageAlt: "Reels animados de Gato Mamado: dos gatos personajes presentan tops de proteína, músculos y mitos del gym",
+    href: "https://www.instagram.com/pamsbcat/", linkLabel: "Ver Instagram",
+    socials: [{ label: "TikTok", href: "https://www.tiktok.com/@pamsb_" }],
+    detail: "Mi propia cuenta de fitness: reels animados con dos personajes que explican gym y suplementos en formato top 5.",
+    challenge: "Hacer que temas de gym y suplementos se entiendan rápido y den ganas de ver el video completo.",
+    role: "Creé los personajes, escribo los guiones y animo y edito cada reel para Instagram y TikTok.",
+    solution: "Una serie con formato fijo (top 5, mitos, qué sí sirve y qué no) que se puede producir seguido sin perder estilo.",
+  },
 ];
 
 const spiderWeb = (
@@ -137,7 +162,8 @@ export default function Home() {
               <div className="project-topline"><span>{project.number} / {project.private ? "Proyecto destacado" : project.type}</span>{project.private && <span className="private-badge"><LockKeyhole aria-hidden="true" /> Uso interno</span>}</div>
               <div className="project-heading">
                 <h3 id={`project-${project.number}`}>{project.title}</h3>
-                {project.href && <a className="project-site-link" href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Visitar ${project.title} (abre en otra pestaña)`}>Explorar sitio <ArrowUpRight aria-hidden="true" /></a>}
+                {project.href && <div className="project-links"><a className="project-site-link" href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.linkLabel ?? "Explorar sitio"} de ${project.title} (abre en otra pestaña)`}>{project.linkLabel ?? "Explorar sitio"} <ArrowUpRight aria-hidden="true" /></a>
+                {project.socials?.map((social) => <a key={social.label} className="project-site-link" href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`${social.label} de ${project.title} (abre en otra pestaña)`}>{social.label} <ArrowUpRight aria-hidden="true" /></a>)}</div>}
               </div>
               <ProjectPreview title={project.title} src={`${basePath}${project.image}`} alt={project.imageAlt} width={project.width} height={project.height} confidential={project.private} tone={project.private ? "project-visual--private" : `project-visual--${project.number}`} />
               <p className="project-intro">{project.detail}</p>
