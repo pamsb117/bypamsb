@@ -35,6 +35,20 @@ export function ScrollMotion() {
       cleanups.push(() => observer.disconnect());
     }
 
+    /* ---------- Autoplay videos only while visible ---------- */
+    const videos = Array.from(document.querySelectorAll<HTMLVideoElement>("video[data-autoplay]"));
+    if (!reducedMotion.matches && typeof IntersectionObserver !== "undefined" && videos.length) {
+      const videoObserver = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          const video = entry.target as HTMLVideoElement;
+          if (entry.isIntersecting) video.play().catch(() => undefined);
+          else video.pause();
+        }
+      }, { threshold: 0.35 });
+      videos.forEach((video) => videoObserver.observe(video));
+      cleanups.push(() => videoObserver.disconnect());
+    }
+
     /* ---------- Scroll progress + marquee velocity ---------- */
     const contact = document.getElementById("contacto");
     const tracks = Array.from(document.querySelectorAll<HTMLElement>(".marquee-track"));

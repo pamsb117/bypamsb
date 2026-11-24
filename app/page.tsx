@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight, Bot, CalendarCheck, CheckCircle2, Clapperboard, Code2, Layers3, LockKeyhole, Mail, MapPin, Megaphone, MessageCircle, Palette, Send, Share2, Sparkles } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Bot, CalendarCheck, CheckCircle2, Clapperboard, Code2, Layers3, LockKeyhole, Mail, MapPin, Megaphone, MessageCircle, Palette, Play, Send, Share2, Sparkles } from "lucide-react";
 import { ProjectPreview } from "@/components/project-preview";
 import { ScrollMotion } from "@/components/scroll-motion";
 
@@ -103,6 +103,10 @@ const projects = [
     imageAlt: "Reels animados de Gato Mamado: dos gatos personajes presentan tops de proteína, músculos y mitos del gym",
     href: "https://www.instagram.com/pamsbcat/", linkLabel: "Ver Instagram",
     socials: [{ label: "TikTok", href: "https://www.tiktok.com/@pamsb_" }],
+    videos: [
+      { src: "/projects/videos/gato-mamado-proteina.mp4", poster: "/projects/videos/gato-mamado-proteina.webp", label: "Reel: ¿cuánta proteína necesitas?" },
+      { src: "/projects/videos/gato-mamado-errores.mp4", poster: "/projects/videos/gato-mamado-errores.webp", label: "Reel: 5 errores de principiante en el gym" },
+    ],
     detail: "Mi propia cuenta de fitness: reels animados con dos personajes que explican gym y suplementos en formato top 5.",
     challenge: "Hacer que temas de gym y suplementos se entiendan rápido y den ganas de ver el video completo.",
     role: "Creé los personajes, escribo los guiones y animo y edito cada reel para Instagram y TikTok.",
@@ -194,7 +198,18 @@ export default function Home() {
                 {project.href && <div className="project-links"><a className="project-site-link" href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`${project.linkLabel ?? "Explorar sitio"} de ${project.title} (abre en otra pestaña)`}>{project.linkLabel ?? "Explorar sitio"} <ArrowUpRight aria-hidden="true" /></a>
                 {project.socials?.map((social) => <a key={social.label} className="project-site-link" href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`${social.label} de ${project.title} (abre en otra pestaña)`}>{social.label} <ArrowUpRight aria-hidden="true" /></a>)}</div>}
               </div>
-              <ProjectPreview title={project.title} src={`${basePath}${project.image}`} alt={project.imageAlt} width={project.width} height={project.height} confidential={project.private} tone={project.private ? "project-visual--private" : `project-visual--${project.tone ?? project.number}`} />
+              {project.videos ? (
+                <div className={`project-visual project-reels project-visual--${project.tone}`}>
+                  <div className="reels-stage">
+                    {project.videos.map((video) => (
+                      <figure className="reel" key={video.src}>
+                        <video src={`${basePath}${video.src}`} poster={`${basePath}${video.poster}`} muted loop playsInline preload="none" data-autoplay aria-label={video.label} />
+                      </figure>
+                    ))}
+                  </div>
+                  <span className="preview-hint reels-hint"><Play aria-hidden="true" /> Reels reales</span>
+                </div>
+              ) : <ProjectPreview title={project.title} src={`${basePath}${project.image}`} alt={project.imageAlt} width={project.width} height={project.height} confidential={project.private} tone={project.private ? "project-visual--private" : `project-visual--${project.tone ?? project.number}`} />}
               <p className="project-intro">{project.detail}</p>
               <details className="project-details">
                 <summary>Cómo se hizo <ArrowDownRight aria-hidden="true" /></summary>
